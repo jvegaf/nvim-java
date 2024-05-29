@@ -6,7 +6,6 @@ local NS = { noremap = true, silent = true }
 
 -- General keymaps
 keymap.set("i", "jk", "<ESC>") -- exit insert mode with jk 
-keymap.set("i", "ii", "<ESC>") -- exit insert mode with ii
 keymap.set("n", "<leader>wq", ":wq<CR>") -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>") -- quit without saving
 keymap.set("n", "W", ":w<CR>") -- save
@@ -64,7 +63,7 @@ keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
 
 -- Git-blame
-keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+-- keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
 
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
@@ -83,22 +82,24 @@ keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
 keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
-keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>')
-keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-keymap.set('n', '<leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-keymap.set('n', '<leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
-keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
-keymap.set('v', '<leader>gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
-keymap.set('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-keymap.set('n', '<leader>gl', '<cmd>lua vim.diagnostic.open_float()<CR>')
-keymap.set('n', '<leader>gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-keymap.set('n', '<leader>gn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-keymap.set('n', '<leader>tr', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>')
+keymap.set("n", "<leader>li", ":LspInfo<cr>", { desc = "LSP Info" })
+keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+-- keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+keymap.set('n', 'gd', function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "definition"})
+keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = "Goto Declaration"})
+keymap.set('n', 'gI', function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto implementation"})
+keymap.set('n', 'gy', function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto type_definition"})
+keymap.set('n', 'gr', '<cmd>:Telescope lsp_references<CR>', { desc = "References"})
+keymap.set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Signature help"})
+keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Rename Buffer"})
+keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format buffer"})
+keymap.set('v', '<leader>gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format code"})
+keymap.set('n', '<leader>xc', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action"})
+keymap.set('n', '<leader>xx', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open Float"})
+keymap.set('n', '<leader>xp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Prev diagnostic"})
+keymap.set('n', '<leader>xn', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Next diagnostic"})
+keymap.set('n', 'gS', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { desc = "Document Symbol"})
+keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>', { desc = "References"})
 
 -- Filetype-specific keymaps (these can be done in the ftplugin directory instead if you prefer)
 keymap.set("n", '<leader>go', function()
@@ -167,12 +168,14 @@ keymap.set("n", "<leader>zc", ":e $MYVIMRC<cr>", { noremap = true, silent = true
 keymap.set("n", "<leader>zn", ":Telescope notify<cr>", { noremap = true, silent = true, desc = "Notifications" })
 keymap.set("n", "<leader>zh", ":checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
 keymap.set("n", "<leader>zm", ":Mason<cr>", { noremap = true, silent = true, desc = "Mason" })
+keymap.set("n", "<leader>zl", ":Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
 keymap.set("n", "<leader>za", ":messages<cr>", { desc = "Messages" })
 
 -- UI
 keymap.set(
   "n",
-  "<leader>ub",
+  "<leader>ui",
   ':exec &bg=="light"? "set bg=dark" : "set bg=light"<cr>',
   { noremap = true, silent = true, desc = "Toggle Background" }
 )
+keymap.set("n", "<leader>uc",function() require('telescope.builtin').colorscheme({enable_preview = true}) end, { desc = "Colorschemes" })

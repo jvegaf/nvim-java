@@ -13,6 +13,15 @@ autocmds({ "FileType" }, {
   desc = "Dont't continue comments with o/O",
 })
 
+augroup("YankHighlight", { clear = true })
+autocmds("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = "YankHighlight",
+  pattern = "*",
+})
+
 autocmds("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp_attach_auto_diag", { clear = true }),
   callback = function(args)

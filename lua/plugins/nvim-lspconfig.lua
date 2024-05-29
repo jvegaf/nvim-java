@@ -37,7 +37,7 @@ return {
         'bashls',
         'cssls',
         'tsserver',
-        'eslint-lsp',
+        'eslint',
         'html',
         'gradle_ls',
         'groovyls',
@@ -45,7 +45,6 @@ return {
         'jdtls',
         'jsonls',
         'lemminx',
-        'stylua',
         'marksman',
         'quick_lint_js',
         'yamlls',
@@ -58,6 +57,9 @@ return {
         'java-debug-adapter',
         'java-test',
         'prettierd',
+        'stylua',
+        'clang-format',
+        'yamlfmt'
       },
     })
 

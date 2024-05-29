@@ -2,9 +2,36 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-  }
+    icons = {
+      breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+      separator = "➜", -- symbol used between a key and it's label
+      group = "", -- symbol prepended to a group
+    },
+  },
+  config = function(_, opts)
+    require("which-key").setup(opts)
+    require("which-key").register {
+      {
+        ["<leader>"] = {
+          -- R = { name = " Runner" },
+          -- T = { name = "󰙨 Tests" },
+          -- n = { name = " Neovim" },
+          -- t = { name = " Terminal" },
+          c = { name = " Code" },
+          d = { name = "󰃤 Debugger" },
+          f = { name = " Find" },
+          g = { name = "󰊢 Git" },
+          h = { name = " Harpoon" },
+          l = { name = " LSP" },
+          p = { name = " Plugins" },
+          r = { name = " Refactor" },
+          s = { name = "󰔚 Snippets" },
+          -- v = { name = " Venv" },
+          z = { name = " System" },
+        },
+      },
+    }
+  end,
 }
 
 
@@ -18,29 +45,6 @@ return {
 --       group = "", -- symbol prepended to a group
 --     },
 --   },
---   config = function(_, opts)
---     dofile(vim.g.base46_cache .. "whichkey")
---     require("which-key").setup(opts)
---     require("which-key").register {
---       {
---         ["<leader>"] = {
---           d = { name = "󰃤 Debugger" },
---           r = { name = " Runner" },
---           -- s = { name = "󰔚 Sessions" },
---           f = { name = " Find" },
---           g = { name = "󰊢 Git" },
---           h = { name = " Harpoon" },
---           l = { name = " LSP" },
---           n = { name = " Neovim" },
---           o = { name = " Options" },
---           p = { name = " Plugins" },
---           t = { name = " Terminal" },
---           T = { name = "󰙨 Tests" },
---           v = { name = " Venv" },
---         },
---       },
---     }
---   end,
 --   keys = {
 --     "[",
 --     "]",
