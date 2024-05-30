@@ -31,7 +31,7 @@ local config = {
     -- Eclipse jdtls location
     '-jar', vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
     -- TODO Update this to point to the correct jdtls subdirectory for your OS (config_linux, config_mac, config_win, etc)
-    '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+    '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_mac',
     '-data', workspace_dir
   },
 
@@ -44,7 +44,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = '/Users/th3g3ntl3man/.sdkman/candidates/java/17.0.9-tem',
+      home = '/opt/homebrew/Cellar/openjdk/21.0.3',
       eclipse = {
         downloadSources = true,
       },
@@ -55,11 +55,11 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-11",
-            path = "/Users/th3g3ntl3man/.sdkman/candidates/java/11.0.23-amzn",
+            path = "/opt/homebrew/Cellar/openjdk@11/11.0.23",
           },
           {
-            name = "JavaSE-17",
-            path = "/Users/th3g3ntl3man/.sdkman/candidates/java/17.0.9-tem",
+            name = "JavaSE-21",
+            path = "/opt/homebrew/Cellar/openjdk/21.0.3",
           }
         }
       },
