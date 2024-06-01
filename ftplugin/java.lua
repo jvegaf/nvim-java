@@ -1,2 +1,6 @@
-vim.opt_local.shiftwidth = 4
-vim.opt_local.tabstop = 4
+local bo = vim.bo
+
+bo.tabstop = 4
+bo.shiftwidth = 4
+bo.expandtab = false
+
