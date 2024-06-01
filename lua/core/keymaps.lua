@@ -96,9 +96,9 @@ keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Ren
 keymap.set('n', 'gq', function() require("conform").format() end, { desc = "format buffer"})
 keymap.set('v', '<leader>gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format code"})
 keymap.set('n', '<leader>xc', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action"})
-keymap.set('n', '<leader>xx', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open Float"})
-keymap.set('n', '<leader>xp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Prev diagnostic"})
-keymap.set('n', '<leader>xn', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Next diagnostic"})
+-- keymap.set('n', '<leader>xx', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open Float"})
+keymap.set('n', '<leader>xo', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Prev diagnostic"})
+keymap.set('n', '<leader>xp', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Next diagnostic"})
 keymap.set('n', 'gS', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { desc = "Document Symbol"})
 keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>', { desc = "References"})
 
