@@ -3,6 +3,7 @@ return {
   "https://gitlab.com/schrieveslaach/sonarlint.nvim",
   -- enabled = false,
   ft = { "python", "cpp", "java" },
+  enabled = false,
   event = "BufEnter",
   config = function()
     local mason = vim.fn.stdpath "data" .. "/mason"
