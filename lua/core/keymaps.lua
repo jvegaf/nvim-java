@@ -51,16 +51,16 @@ keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file expl
 keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
 
 -- Telescope
-keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, {})
-keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, {})
-keymap.set('n', '<leader>fe', require('telescope.builtin').git_files, {})
-keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, {})
-keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, {})
-keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, {})
-keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_find, {})
-keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {})
-keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {})
-keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
+keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = "Find files" })
+keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = "Recent files" })
+keymap.set('n', '<leader>fe', require('telescope.builtin').git_files, { desc = "Git files" })
+keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = "Live grep" })
+keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = "Find buffers" })
+keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = "Find help" })
+keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_find, {desc = "Search in buffer"})
+keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, { desc = "Document symbols" })
+keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, { desc = "Incoming calls" })
+keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end, { desc = "Find methods" })
 
 -- Git-blame
 -- keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
@@ -160,6 +160,13 @@ keymap.set("n", "<leader>a", "gg<S-v>G", NS)
 
 keymap.set("n", "vv", "V", NS)
 
+-- Move Lines
+keymap.set("n", "<M-j>", ":m .+1<cr>==", { desc = "Move down" })
+keymap.set("n", "<M-k>", ":m .-2<cr>==", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc>:m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc>:m .-2<cr>==gi", { desc = "Move up" })
+keymap.set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+keymap.set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", NS)

@@ -146,4 +146,11 @@ return {
       require("lsp_extra_dim").setup()
     end,
   },
+  {
+    "nanotee/sqls.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    ft = { "sql" },
+  },
 }

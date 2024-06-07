@@ -29,7 +29,14 @@ return {
     },
     {
       "Exafunction/codeium.nvim",
-      opts = {},
+      event = "VeryLazy",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+      },
+      config = function()
+        require("codeium").setup({})
+      end,
     },
     {
       "f3fora/cmp-spell",
