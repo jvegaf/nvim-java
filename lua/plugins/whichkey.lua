@@ -23,7 +23,10 @@ return {
           D = { name = " Dadbod" },
           f = { name = " Find" },
           F = { name = " File" },
-          g = { name = "󰊢 Git" },
+          g = {
+            name = "󰊢 Git",
+            h = { name = "+GitSigns"}
+          },
           h = { name = " Harpoon" },
           l = { name = " LSP" },
           p = { name = " Plugins" },

@@ -105,6 +105,7 @@ return {
         view = {
           width = 40,
           side = "left",
+          relativenumber = true,
         },
         trash = {
           cmd = "trash",

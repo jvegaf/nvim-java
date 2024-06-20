@@ -2,6 +2,7 @@ local formatters = {
   lua = { "stylua" },
   python = { "autopep8" },
   cpp = { "clang_format" },
+  java = { "clang_format" },
   c = { "clang_format" },
   go = { "gofumpt" },
   cs = { "csharpier" },

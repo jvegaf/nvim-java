@@ -10,6 +10,46 @@ return {
   -- { 'lewis6991/fileline.nvim', lazy = false },
   -- { 'axlebedev/vim-footprints', lazy = false },
   -- }}}
+  {
+    "cappyzawa/trim.nvim",
+    event = "BufWrite",
+    opts = {
+      trim_on_write = true,
+      trim_trailing = true,
+      trim_last_line = false,
+      trim_first_line = false,
+      -- ft_blocklist = { "markdown", "text", "org", "tex", "asciidoc", "rst" },
+      -- patterns = {[[%s/\(\n\n\)\n\+/\1/]]}, -- Only one consecutive bl
+    },
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = function()
+      -- Apply globals from 1-options.lua
+      local is_enabled = vim.g.lsp_signature_enabled
+      local round_borders = {}
+      if vim.g.lsp_round_borders_enabled then
+        round_borders = { border = "rounded" }
+      end
+      return {
+        -- Window mode
+        floating_window = is_enabled, -- Display it as floating window.
+        hi_parameter = "IncSearch", -- Color to highlight floating window.
+        handler_opts = round_borders, -- Window style
+
+        -- Hint mode
+        hint_enable = false, -- Display it as hint.
+        hint_prefix = "👈 ",
+
+        -- Additionally, you can use <space>uH to toggle inlay hints.
+        toggle_key_flip_floatwin_setting = is_enabled,
+      }
+    end,
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
+  },
   ------------------------------------------------------------------------------
   -- Find And Replace
   {

@@ -11,6 +11,11 @@ keymap.set("n", "<leader>q", ":q!<CR>") -- quit without saving
 keymap.set("n", "W", ":w<CR>") -- save
 keymap.set("n", "Q", ":bdelete<CR>") -- close buffer
 
+-- Buffers
+keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", { desc = "Next buffer" })
+keymap.set("n", "<leader>bb", ":e #<cr>", { desc = "Switch to Other buffer" })
+
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
@@ -83,15 +88,15 @@ keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
 keymap.set("n", "<leader>li", ":LspInfo<cr>", { desc = "LSP Info" })
-keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+-- keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 -- keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-keymap.set('n', 'gd', function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "definition"})
-keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = "Goto Declaration"})
-keymap.set('n', 'gI', function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto implementation"})
-keymap.set('n', 'gy', function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto type_definition"})
-keymap.set('n', 'gr', '<cmd>:Telescope lsp_references<CR>', { desc = "References"})
+-- keymap.set('n', 'gd', function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "definition"})
+-- keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = "Goto Declaration"})
+-- keymap.set('n', 'gI', function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto implementation"})
+-- keymap.set('n', 'gy', function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto type_definition"})
+-- keymap.set('n', 'gr', '<cmd>:Telescope lsp_references<CR>', { desc = "References"})
 keymap.set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Signature help"})
-keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Rename Buffer"})
+keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Rename Buffer"})
 -- keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format buffer"})
 keymap.set('n', 'gq', function() require("conform").format() end, { desc = "format buffer"})
 keymap.set('v', '<leader>gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format code"})
