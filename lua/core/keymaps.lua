@@ -5,7 +5,7 @@ local keymap = vim.keymap
 local NS = { noremap = true, silent = true }
 
 -- General keymaps
-keymap.set("i", "jk", "<ESC>") -- exit insert mode with jk 
+keymap.set("i", "jk", "<ESC>") -- exit insert mode with jk
 keymap.set("n", "<leader>wq", ":wq<CR>") -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>") -- quit without saving
 keymap.set("n", "W", ":w<CR>") -- save
@@ -23,7 +23,7 @@ keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close split window
 keymap.set("n", "<leader>sj", "<C-w>-") -- make split window height shorter
 keymap.set("n", "<leader>sk", "<C-w>+") -- make split windows height taller
-keymap.set("n", "<leader>sl", "<C-w>>5") -- make split windows width bigger 
+keymap.set("n", "<leader>sl", "<C-w>>5") -- make split windows width bigger
 keymap.set("n", "<leader>sh", "<C-w><5") -- make split windows width smaller
 
 -- Tab management
@@ -50,9 +50,9 @@ keymap.set("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
 -- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
--- Nvim-tree
-keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- toggle file explorer
-keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file explorer
+-- FileBrowser
+keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>") -- toggle file explorer
+keymap.set("n", "<leader>er", ":Telescope file_browser<CR>") -- toggle focus to file explorer
 keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
 
 -- Telescope

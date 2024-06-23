@@ -21,6 +21,7 @@ return {
           c = { name = " Code" },
           d = { name = "󰃤 Debugger" },
           D = { name = " Dadbod" },
+          e = { name = " FileBrowser" },
           f = { name = " Find" },
           F = { name = " File" },
           g = {
