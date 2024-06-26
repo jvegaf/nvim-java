@@ -1,6 +1,6 @@
 return {
   "akinsho/nvim-toggleterm.lua",
-  lazy = false,
+  event = "VeryLazy",
   branch = "main",
   keys = {
     { "<M-1>", "<Cmd>1ToggleTerm direction=vertical size=80<Cr>", desc = "Terminal #1", mode = { "t", "n" } },

@@ -1,5 +1,6 @@
 return {
   "nvimdev/lspsaga.nvim",
+  lazy = false,
   event = "LspAttach",
   init = function()
     vim.keymap.set("n", "<leader>xc", "<cmd>Lspsaga code_action<cr>", { desc = "Lspsaga | Code Action", silent = true })
