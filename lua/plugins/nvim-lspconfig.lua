@@ -92,6 +92,7 @@ return {
           "stylua",
           "clang-format",
           "yamlfmt",
+          "dart-debug-adapter"
         },
       })
 

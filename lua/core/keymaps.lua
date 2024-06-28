@@ -58,6 +58,7 @@ keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file expl
 -- Telescope
 keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = "Find files" })
 keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = "Recent files" })
+keymap.set('n', '<leader>fc', require('telescope.builtin').git_commits, { desc = "Git Commit" })
 keymap.set('n', '<leader>fe', require('telescope.builtin').git_files, { desc = "Git files" })
 keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = "Live grep" })
 keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = "Find buffers" })
@@ -161,7 +162,7 @@ keymap.set("v", "p", '"_dP', NS)
 keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
 -- Select all
-keymap.set("n", "<leader>a", "gg<S-v>G", NS)
+keymap.set("n", "<C-a>", "gg<S-v>G", NS)
 
 keymap.set("n", "vv", "V", NS)
 

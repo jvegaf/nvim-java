@@ -92,6 +92,7 @@ return {
         "vim",
         "vimdoc",
         "query",
+        "dart",
       },
     },
     config = function(_, opts)

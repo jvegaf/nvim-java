@@ -16,7 +16,7 @@ return {
           -- R = { name = " Runner" },
           -- T = { name = "󰙨 Tests" },
           -- n = { name = " Neovim" },
-          -- t = { name = " Terminal" },
+          a = { name = " NeoAI" },
           b = { name = " Buffer" },
           c = { name = " Code" },
           d = { name = "󰃤 Debugger" },

@@ -11,4 +11,8 @@ return {
       float = false,
     }
   },
+  keys = {
+    { "<leader>mv", "<cmd>DataViewer<cr>", desc = "Data Viewer" },
+    { "<leader>mvc", "<cmd>DataViewerClose<cr>", desc = "Close Data Viewer" },
+  }
 }
