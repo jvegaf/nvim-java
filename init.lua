@@ -27,6 +27,7 @@ require("lazy").setup("plugins", {
 require("core.options")
 require("core.keymaps")
 require("core.autocmds")
+require("core.commands")
 
 local is_lin = vim.loop.os_uname().sysname == "Linux"
 local is_win = vim.loop.os_uname().sysname == "Windows_NT"

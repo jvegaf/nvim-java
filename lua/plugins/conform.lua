@@ -7,6 +7,7 @@ local formatters = {
   go = { "gofumpt" },
   cs = { "csharpier" },
   yaml = { "yamlfmt" },
+  dart = { "blink" },
 }
 
 local prettier_ft = {
@@ -33,15 +34,17 @@ return {
   -- NOTE: Formatting
   "stevearc/conform.nvim",
   event = "User FilePost",
-  opts = {
-    -- format_after_save = {
-    --   async = true,
-    -- },
-    -- format_on_save = {
-    --   -- These options will be passed to conform.format()
-    --   quiet = true,
-    --   lsp_fallback = true,
-    -- },
+  config = function()
+    require("conform").setup({
     formatters_by_ft = formatters,
-  },
+    formatters = {
+      blink = {
+        command = "/Users/th3g3ntl3man/.opt/blink/target/release/blink",
+        args = { "$FILENAME" },
+        stdin = false,
+        cwd = require("conform.util").root_file({ ".editorconfig", "pubspec.yaml" }),
+      },
+    },
+    })
+  end,
 }

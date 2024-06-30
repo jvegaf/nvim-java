@@ -99,9 +99,8 @@ keymap.set("n", "<leader>li", ":LspInfo<cr>", { desc = "LSP Info" })
 keymap.set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Signature help"})
 keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Rename Buffer"})
 -- keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format buffer"})
-keymap.set('n', 'gq', function() require("conform").format() end, { desc = "format buffer"})
-keymap.set('v', '<leader>gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format code"})
-keymap.set('n', '<leader>xc', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action"})
+keymap.set({ 'n', 'v' }, 'gq', function() require("conform").format({ async = true, lsp_format = "fallback" }) end, { desc = "Format"})
+-- keymap.set('n', '<leader>xc', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action"})
 -- keymap.set('n', '<leader>xx', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open Float"})
 keymap.set('n', '<leader>xo', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Prev diagnostic"})
 keymap.set('n', '<leader>xp', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Next diagnostic"})
@@ -109,13 +108,13 @@ keymap.set('n', 'gS', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { desc = "Do
 keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>', { desc = "References"})
 
 -- Filetype-specific keymaps (these can be done in the ftplugin directory instead if you prefer)
-keymap.set("n", '<leader>go', function()
+keymap.set("n", '<leader>lo', function()
   if vim.bo.filetype == 'java' then
     require('jdtls').organize_imports();
   end
 end)
 
-keymap.set("n", '<leader>gu', function()
+keymap.set("n", '<leader>lu', function()
   if vim.bo.filetype == 'java' then
     require('jdtls').update_projects_config();
   end
@@ -134,24 +133,24 @@ keymap.set("n", '<leader>tm', function()
 end)
 
 -- Debugging
-keymap.set("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
-keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
-keymap.set("n", "<leader>bl", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
-keymap.set("n", '<leader>br', "<cmd>lua require'dap'.clear_breakpoints()<cr>")
-keymap.set("n", '<leader>ba', '<cmd>Telescope dap list_breakpoints<cr>')
+keymap.set("n", "<leader>d?", function() local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes) end)
+keymap.set("n", "<leader>dC", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
+keymap.set("n", "<leader>dL", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
+keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.clear_breakpoints()<cr>")
+keymap.set("n", "<leader>da", '<cmd>Telescope dap list_breakpoints<cr>')
+keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
 keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
+keymap.set("n", "<leader>dd", function() require('dap').disconnect(); require('dapui').close(); end)
+keymap.set("n", "<leader>de", function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
+keymap.set("n", "<leader>df", '<cmd>Telescope dap frames<cr>')
+keymap.set("n", "<leader>dh", '<cmd>Telescope dap commands<cr>')
+keymap.set("n", "<leader>di", function() require "dap.ui.widgets".hover() end)
 keymap.set("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
 keymap.set("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>")
-keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>")
-keymap.set("n", '<leader>dd', function() require('dap').disconnect(); require('dapui').close(); end)
-keymap.set("n", '<leader>dt', function() require('dap').terminate(); require('dapui').close(); end)
-keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
 keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
-keymap.set("n", '<leader>di', function() require "dap.ui.widgets".hover() end)
-keymap.set("n", '<leader>d?', function() local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes) end)
-keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
-keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
-keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
+keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>")
+keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
+keymap.set("n", "<leader>dt", function() require('dap').terminate(); require('dapui').close(); end)
 
 
 
