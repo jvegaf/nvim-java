@@ -78,8 +78,7 @@ return {
         ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
         ["<C-b>"] = cmp.mapping.scroll_docs(-4), -- scroll backward
         ["<C-f>"] = cmp.mapping.scroll_docs(4), -- scroll forward
-        -- ["<C-Space>"] = cmp.mapping.complete({}), -- show completion suggestions
-        ["<C-w>"] = cmp.mapping.complete({}), -- show completion suggestions
+        ["<C-Space>"] = cmp.mapping.complete({}), -- show completion suggestions
         ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,

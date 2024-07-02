@@ -35,8 +35,10 @@ return {
       return {
         -- Window mode
         floating_window = is_enabled, -- Display it as floating window.
+        floating_window_off_y = 8,
         hi_parameter = "IncSearch", -- Color to highlight floating window.
         handler_opts = round_borders, -- Window style
+        doc_lines = 0, -- Max doc lines
 
         -- Hint mode
         hint_enable = false, -- Display it as hint.

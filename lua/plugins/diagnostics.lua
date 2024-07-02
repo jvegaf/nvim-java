@@ -34,7 +34,7 @@ return {
         desc = "Quickfix List (Trouble)",
       },
     },
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = { use_diagnostic_signs = true },
   },
   {
     "aznhe21/actions-preview.nvim",

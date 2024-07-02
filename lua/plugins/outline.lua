@@ -1,7 +1,7 @@
 return {
   'stevearc/aerial.nvim',
   event = 'VeryLazy',
-  enabled = false,
+  -- enabled = false,
   config = function()
     require('aerial').setup()
   end,
