@@ -153,6 +153,31 @@ return {
             },
           })
         end,
+        ["cssls"] =function ()
+          require("lspconfig").cssls.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+              css = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
+                },
+              },
+              scss = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
+                },
+              },
+              less = {
+                validate = true,
+                lint = {
+                  unknownAtRules = "ignore",
+                },
+              },
+            }
+          })
+        end,
       })
 
       -- Lua LSP settings
