@@ -22,32 +22,32 @@ return {
       -- patterns = {[[%s/\(\n\n\)\n\+/\1/]]}, -- Only one consecutive bl
     },
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = function()
-      -- Apply globals from 1-options.lua
-      local round_borders = {}
-      if vim.g.lsp_round_borders_enabled then
-        round_borders = { border = "rounded" }
-      end
-      return {
-        -- Window mode
-        floating_window = false, -- Display it as floating window.
-        hi_parameter = "IncSearch", -- Color to highlight floating window.
-        handler_opts = round_borders, -- Window style
-        doc_lines = 0, -- Max doc lines
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     -- Apply globals from 1-options.lua
+  --     local round_borders = {}
+  --     if vim.g.lsp_round_borders_enabled then
+  --       round_borders = { border = "rounded" }
+  --     end
+  --     return {
+  --       -- Window mode
+  --       floating_window = false, -- Display it as floating window.
+  --       hi_parameter = "IncSearch", -- Color to highlight floating window.
+  --       handler_opts = round_borders, -- Window style
+  --       doc_lines = 0, -- Max doc lines
 
-        -- Hint mode
-        hint_enable = false, -- Display it as hint.
-        hint_prefix = "👈 ",
+  --       -- Hint mode
+  --       hint_enable = false, -- Display it as hint.
+  --       hint_prefix = "👈 ",
 
-      }
-    end,
-    config = function(_, opts)
-      require("lsp_signature").setup(opts)
-    end,
-  },
+  --     }
+  --   end,
+  --   config = function(_, opts)
+  --     require("lsp_signature").setup(opts)
+  --   end,
+  -- },
   ------------------------------------------------------------------------------
   -- Find And Replace
   {

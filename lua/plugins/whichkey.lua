@@ -10,35 +10,28 @@ return {
   },
   config = function(_, opts)
     require("which-key").setup(opts)
-    require("which-key").register {
+    require("which-key").add(
       {
-        ["<leader>"] = {
-          -- R = { name = " Runner" },
-          -- T = { name = "󰙨 Tests" },
-          -- n = { name = " Neovim" },
-          a = { name = " NeoAI" },
-          b = { name = " Buffer" },
-          c = { name = " Code" },
-          d = { name = "󰃤 Debugger" },
-          D = { name = " Dadbod" },
-          e = { name = " FileBrowser" },
-          f = { name = " Find" },
-          F = { name = " File" },
-          g = {
-            name = "󰊢 Git",
-            h = { name = "+GitSigns"}
-          },
-          h = { name = " Harpoon" },
-          l = { name = " LSP" },
-          p = { name = " Plugins" },
-          r = { name = " Refactor" },
-          s = { name = "󰔚 Snippets" },
-          u = { name = "󱣻 UI" },
-          x = { name = "󱣻 Diagnostics" },
-          z = { name = " System" },
-        },
-      },
-    }
+        { "<leader>D", group = " Dadbod" },
+        { "<leader>F", group = " File" },
+        { "<leader>a", group = " NeoAI" },
+        { "<leader>b", group = " Buffer" },
+        { "<leader>c", group = " Code" },
+        { "<leader>d", group = "󰃤 Debugger" },
+        { "<leader>e", group = " FileBrowser" },
+        { "<leader>f", group = " Find" },
+        { "<leader>g", group = "󰊢 Git" },
+        { "<leader>gh", group = "GitSigns" },
+        { "<leader>h", group = " Harpoon" },
+        { "<leader>l", group = " LSP" },
+        { "<leader>p", group = " Plugins" },
+        { "<leader>r", group = " Refactor" },
+        { "<leader>s", group = "󰔚 Snippets" },
+        { "<leader>u", group = "󱣻 UI" },
+        { "<leader>x", group = "󱣻 Diagnostics" },
+        { "<leader>z", group = " System" },
+      }
+    )
   end,
 }
 

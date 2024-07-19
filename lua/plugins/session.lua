@@ -2,11 +2,11 @@ return {
   {
     "folke/persistence.nvim",
     lazy = false,
-    -- enabled = false,
+    enabled = false,
   },
   {
     "stevearc/resession.nvim",
-    -- enabled = false,
+    enabled = false,
     lazy = false,
     config = function()
       local resession = require("resession")
@@ -14,9 +14,12 @@ return {
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           -- Only load the session if nvim was started with no args
+          local is_java_project = vim.fn.glob('*.java') ~= ''
           if vim.fn.argc(-1) == 0 then
             -- Save these to a different directory, so our manual sessions don't get polluted
-            resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
+            if not is_java_project then
+              resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
+            end
           end
         end,
       })
