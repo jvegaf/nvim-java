@@ -2,10 +2,59 @@
 -- Kanagawa Theme (Custom Palette)
 return {
   {
+    -- Shortened Github Url
+    "Mofiqul/dracula.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local dracula = require("dracula")
+      dracula.setup({
+        -- customize dracula color palette
+        colors = {
+          bg = "#282A36",
+          fg = "#F8F8F2",
+          selection = "#44475A",
+          comment = "#6272A4",
+          red = "#FF5555",
+          orange = "#FFB86C",
+          yellow = "#F1FA8C",
+          green = "#50fa7b",
+          purple = "#BD93F9",
+          cyan = "#8BE9FD",
+          pink = "#FF79C6",
+          bright_red = "#FF6E6E",
+          bright_green = "#69FF94",
+          bright_yellow = "#FFFFA5",
+          bright_blue = "#D6ACFF",
+          bright_magenta = "#FF92DF",
+          bright_cyan = "#A4FFFF",
+          bright_white = "#FFFFFF",
+          menu = "#21222C",
+          visual = "#3E4452",
+          gutter_fg = "#4B5263",
+          nontext = "#3B4048",
+          white = "#ABB2BF",
+          black = "#191A21",
+        },
+        -- show the '~' characters after the end of buffers
+        show_end_of_buffer = true, -- default false
+        -- use transparent background
+        transparent_bg = true, -- default false
+        -- set custom lualine background color
+        lualine_bg_color = "#44475a", -- default nil
+        -- set italic comment
+        italic_comment = true, -- default false
+        -- overrides the default highlights with table see `:h synIDattr`
+      })
+      -- Make sure to set the color scheme when neovim loads and configures the dracula plugin
+      vim.cmd.colorscheme("dracula")
+    end,
+  },
+  {
     -- https://github.com/rebelot/kanagawa.nvim
-    'rebelot/kanagawa.nvim', -- You can replace this with your favorite colorscheme
-    lazy = false,            -- We want the colorscheme to load immediately when starting Neovim
-    priority = 1000,         -- Load the colorscheme before other non-lazy-loaded plugins
+    "rebelot/kanagawa.nvim", -- You can replace this with your favorite colorscheme
+    lazy = false, -- We want the colorscheme to load immediately when starting Neovim
+    priority = 1000, -- Load the colorscheme before other non-lazy-loaded plugins
     opts = {
       -- Replace this with your scheme-specific settings or remove to use the defaults
       -- transparent = true,
@@ -40,20 +89,20 @@ return {
           -- Diag
           samuraiRed = "#E82424",
           roninYellow = "#FF9E3B",
-          waveAqua1 = "#7E9CD8",  -- modified
+          waveAqua1 = "#7E9CD8", -- modified
           dragonBlue = "#7FB4CA", -- modified
 
           -- Foreground and Comments
           oldWhite = "#C8C093",
-          fujiWhite = "#F9E7C0",   -- modified
+          fujiWhite = "#F9E7C0", -- modified
           fujiGray = "#727169",
-          oniViolet = "#BFA3E6",   -- modified
-          oniViolet2 = "#BCACDB",  -- modified
+          oniViolet = "#BFA3E6", -- modified
+          oniViolet2 = "#BCACDB", -- modified
           crystalBlue = "#8CABFF", -- modified
           springViolet1 = "#938AA9",
           springViolet2 = "#9CABCA",
           springBlue = "#7FC4EF", -- modified
-          waveAqua2 = "#77BBDD",  -- modified
+          waveAqua2 = "#77BBDD", -- modified
 
           springGreen = "#98BB6C",
           boatYellow1 = "#938056",
@@ -69,7 +118,7 @@ return {
       },
     },
     config = function(_, opts)
-      require('kanagawa').setup(opts) -- Replace this with your favorite colorscheme
+      require("kanagawa").setup(opts) -- Replace this with your favorite colorscheme
 
       -- Custom diff colors
       vim.cmd([[
@@ -84,7 +133,7 @@ return {
       autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#1F1F1F
       autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#1F1F1F
     ]])
-    end
+    end,
   },
   {
     "tanvirtin/monokai.nvim",
@@ -116,7 +165,7 @@ return {
   },
   {
     "Tsuzat/NeoSolarized.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     -- config = function()
     --   require("NeoSolarized").setup({
@@ -136,7 +185,7 @@ return {
   },
   {
     "oxfist/night-owl.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     -- config = function()
     --   require("night-owl").setup({})
@@ -156,21 +205,20 @@ return {
   },
   {
     -- https://github.com/folke/tokyonight.nvim
-    'folke/tokyonight.nvim', -- You can replace this with your favorite colorscheme
-    lazy = false,          -- We want the colorscheme to load immediately when starting Neovim
-    priority = 1000,       -- Load the colorscheme before other non-lazy-loaded plugins
+    "folke/tokyonight.nvim", -- You can replace this with your favorite colorscheme
+    lazy = false, -- We want the colorscheme to load immediately when starting Neovim
+    priority = 1000, -- Load the colorscheme before other non-lazy-loaded plugins
     opts = {
       -- Replace this with your scheme-specific settings or remove to use the defaults
       -- transparent = true,
       style = "night", -- other variations "storm, night, moon, day"
     },
     config = function(_, opts)
-      require('tokyonight').setup(opts) -- Replace this with your favorite colorscheme
-      vim.cmd("colorscheme tokyonight") -- Replace this with your favorite colorscheme
+      require("tokyonight").setup(opts) -- Replace this with your favorite colorscheme
+      -- vim.cmd("colorscheme tokyonight") -- Replace this with your favorite colorscheme
       -- vim.cmd("colorscheme eldritch") -- Replace this with your favorite colorscheme
-    end
-  }
-
+    end,
+  },
 }
 
 -- Tokyo Night Theme
