@@ -1,7 +1,6 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
     build = ":Copilot auth",
     event = "InsertEnter",
     config = function()
@@ -14,7 +13,6 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
-    enabled = false,
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper

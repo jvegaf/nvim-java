@@ -22,13 +22,13 @@ return {
     "jdrupal-dev/css-vars.nvim",
     {
       "zbirenbaum/copilot-cmp",
-      enabled = false,
       config = function()
         require("copilot_cmp").setup()
       end,
     },
     {
       "Exafunction/codeium.nvim",
+      enabled = false,
       event = "VeryLazy",
       dependencies = {
         "nvim-lua/plenary.nvim",
@@ -218,9 +218,10 @@ return {
           -- if entry.source.name == "crates" then
           --   item.kind = format_icon(ui.codicons.misc.package)
           -- end
-          -- if entry.source.name == "copilot" then
-          --   item.kind = format_icon(ui.codicons.misc.octoface)
-          -- end
+          if entry.source.name == "copilot" then
+            item.kind = format_icon("")
+            item.kind_hl_group = "CmpItemKindCopilot"
+          end
           if entry.source.name == "codeium" then
             item.kind = format_icon("")
             item.kind_hl_group = "CmpItemKindCodeium"
