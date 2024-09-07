@@ -180,7 +180,7 @@ return {
             }
           })
         end,
-        ["clangd"] - function ()
+        ["clangd"] = function ()
           require("lspconfig").clangd.setup({
             capabilities = lsp_capabilities,
             cmd = { "clangd", "--offset-encoding=utf-8" },
