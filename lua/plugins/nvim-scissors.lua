@@ -1,5 +1,6 @@
 return {
 	"chrisgrieser/nvim-scissors",
+  enabled = false,
   event = "VeryLazy",
 	dependencies = "nvim-telescope/telescope.nvim", -- optional
 	opts = {},

@@ -52,6 +52,7 @@ return {
   -- Find And Replace
   {
     "MagicDuck/grug-far.nvim",
+    enabled = false,
     event = "VeryLazy",
     cmd = { "GrugFar" },
     opts = {
@@ -106,6 +107,7 @@ return {
   },
   {
     "chrisgrieser/nvim-genghis",
+    enabled = false,
     dependencies = "stevearc/dressing.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = function()
@@ -143,6 +145,10 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+  {
+    "normen/vim-pio",
+    event = "VeryLazy",
+  }
   -- }}}
   --------------------------------------------------------------------------------
   -- Share Code

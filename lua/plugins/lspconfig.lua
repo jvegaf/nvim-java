@@ -94,7 +94,7 @@ return {
           "stylua",
           "clang-format",
           "yamlfmt",
-          "dart-debug-adapter",
+          -- "dart-debug-adapter",
         },
       })
 
@@ -180,6 +180,12 @@ return {
             }
           })
         end,
+        ["clangd"] - function ()
+          require("lspconfig").clangd.setup({
+            capabilities = lsp_capabilities,
+            cmd = { "clangd", "--offset-encoding=utf-8" },
+          })
+        end
       })
 
       -- Lua LSP settings
