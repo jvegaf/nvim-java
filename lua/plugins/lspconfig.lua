@@ -34,32 +34,32 @@ return {
           global_settings = "nvim.json",
         },
       },
-      -- {
-      --   "nvim-java/nvim-java",
-      --   ft = { "java" },
-      --   dependencies = {
-      --     "nvim-java/lua-async-await",
-      --     "nvim-java/nvim-java-refactor",
-      --     "nvim-java/nvim-java-core",
-      --     "nvim-java/nvim-java-test",
-      --     "nvim-java/nvim-java-dap",
-      --     "MunifTanjim/nui.nvim",
-      --     "neovim/nvim-lspconfig",
-      --     "mfussenegger/nvim-dap",
-      --     {
-      --       "williamboman/mason.nvim",
-      --       opts = {
-      --         registries = {
-      --           "github:nvim-java/mason-registry",
-      --           "github:mason-org/mason-registry",
-      --         },
-      --       },
-      --     },
-      --   },
-      --   config = function()
-      --     require("java").setup({})
-      --   end,
-      -- },
+      {
+        "nvim-java/nvim-java",
+        ft = { "java" },
+        dependencies = {
+          "nvim-java/lua-async-await",
+          "nvim-java/nvim-java-refactor",
+          "nvim-java/nvim-java-core",
+          "nvim-java/nvim-java-test",
+          "nvim-java/nvim-java-dap",
+          "MunifTanjim/nui.nvim",
+          "neovim/nvim-lspconfig",
+          "mfussenegger/nvim-dap",
+          {
+            "williamboman/mason.nvim",
+            opts = {
+              registries = {
+                "github:nvim-java/mason-registry",
+                "github:mason-org/mason-registry",
+              },
+            },
+          },
+        },
+        config = function()
+          require("java").setup({})
+        end,
+      },
     },
     config = function()
       require("mason").setup()
@@ -68,7 +68,7 @@ return {
         ensure_installed = {
           "bashls",
           "cssls",
-          "tsserver",
+          "ts_ls",
           "eslint",
           "html",
           "gradle_ls",
@@ -76,7 +76,7 @@ return {
           "lua_ls",
           "clangd",
           "arduino_language_server",
-          -- "jdtls",
+          "jdtls",
           "jsonls",
           "lemminx",
           "marksman",
@@ -88,12 +88,13 @@ return {
       require("mason-tool-installer").setup({
         -- Install these linters, formatters, debuggers automatically
         ensure_installed = {
-          -- "java-debug-adapter",
-          -- "java-test",
+          "java-debug-adapter",
+          "java-test",
           "prettierd",
           "stylua",
           "clang-format",
           "yamlfmt",
+          "xmlformatter",
           -- "dart-debug-adapter",
         },
       })
@@ -110,15 +111,15 @@ return {
 
       -- Call setup on each LSP server
       require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          -- Don't call setup for JDTLS Java LSP because it will be setup from a separate config
-          if server_name ~= "jdtls" then
-            lspconfig[server_name].setup({
-              -- on_attach = lsp_attach,
-              capabilities = lsp_capabilities,
-            })
-          end
-        end,
+        -- function(server_name)
+        --   -- Don't call setup for JDTLS Java LSP because it will be setup from a separate config
+        --   if server_name ~= "jdtls" then
+        --     lspconfig[server_name].setup({
+        --       -- on_attach = lsp_attach,
+        --       capabilities = lsp_capabilities,
+        --     })
+        --   end
+        -- end,
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.

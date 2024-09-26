@@ -47,7 +47,7 @@ return {
         -- overrides the default highlights with table see `:h synIDattr`
       })
       -- Make sure to set the color scheme when neovim loads and configures the dracula plugin
-      vim.cmd.colorscheme("dracula")
+      -- vim.cmd.colorscheme("dracula")
     end,
   },
   {
