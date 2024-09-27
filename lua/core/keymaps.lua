@@ -165,6 +165,10 @@ keymap.set("n", "<C-a>", "gg<S-v>G", NS)
 
 keymap.set("n", "vv", "V", NS)
 
+
+keymap.set("v", "<", "<gv", { desc = "Stay in indent mode" })
+keymap.set("v", ">", ">gv", { desc = "Stay in indent mode" })
+
 -- Move Lines
 keymap.set("n", "<M-j>", ":m .+1<cr>==", { desc = "Move down" })
 keymap.set("n", "<M-k>", ":m .-2<cr>==", { desc = "Move up" })
