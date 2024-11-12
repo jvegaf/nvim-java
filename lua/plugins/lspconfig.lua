@@ -73,7 +73,7 @@ return {
           "eslint",
           "html",
           "gradle_ls",
-          "groovyls",
+          -- "groovyls",
           "lua_ls",
           "clangd",
           "arduino_language_server",
