@@ -67,6 +67,7 @@ return {
         -- Install these LSPs automatically
         ensure_installed = {
           "bashls",
+          "basedpyright",
           "cssls",
           "ts_ls",
           "eslint",
@@ -95,6 +96,9 @@ return {
           "clang-format",
           "yamlfmt",
           "xmlformatter",
+          "black",
+          "isort",
+          "debugpy",
           -- "dart-debug-adapter",
         },
       })

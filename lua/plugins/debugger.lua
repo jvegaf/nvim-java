@@ -11,7 +11,8 @@ return {
     opts = {
       ensure_installed = {
         "dart",
-        "js-debug-adapter",
+        "chrome-debug-adapter",
+        "python",
       },
     },
   },
