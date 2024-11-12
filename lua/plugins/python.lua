@@ -36,6 +36,9 @@ return {
     "neolooong/whichpy.nvim",
     ft = { "python" },
     opts = {},
+    keys = {
+      { "<leader>ws", "<cmd>WhichPy select<cr>" },
+    },
   },
   {
     "alexpasmantier/pymple.nvim",
