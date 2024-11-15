@@ -2,11 +2,9 @@ return {
   {
     "folke/persistence.nvim",
     lazy = false,
-    enabled = false,
   },
   {
     "stevearc/resession.nvim",
-    enabled = false,
     lazy = false,
     config = function()
       local resession = require("resession")
