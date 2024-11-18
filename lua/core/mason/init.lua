@@ -6,6 +6,11 @@ require("mason-lspconfig").setup({
     "bashls",
     "clangd",
     "cssls",
+    "dartls",
+    "dockerls",
+    "dotls",
+    "emmet_ls",
+    "eslint_d",
     "eslint",
     "gradle_ls",
     "html",
@@ -34,7 +39,6 @@ require("mason-nvim-dap").setup({
   ensure_installed = {
     "firefox",
     "chrome",
-    -- "codelldb",
     "dart-debug-adapter",
     "java-debug-adapter",
     -- "kotlin-debug-adapter",
@@ -59,7 +63,7 @@ require("mason-null-ls").setup({
   ensure_installed = {
     "black",
     "clang-format",
-    -- "dart_format",
+    "dart_format",
     "eslint_d",
     "isort",
     "mypy",

@@ -114,26 +114,26 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 local providers_path = "core.lsp.providers."
 local lsps_table = {
-  -- dartls_lsp = require(providers_path .. "dartls"),
   -- go_lsp = require(providers_path .. "go"),
+  -- kotlin_lsp = require(providers_path .. "kotlin"),
   -- latex_lsp = require(providers_path .. "latex"),
   -- php_lsp = require(providers_path .. "php"),
+  -- slint_lsp = require(providers_path .. "slint"),
+  -- tailwind_lsp = require(providers_path .. "tailwind"),
+  -- vue_lsp = require(providers_path .. "vue"),
   angular_lsp = require(providers_path .. "angular"),
   arduino_lsp = require(providers_path .. "arduino"),
   clang_lsp = require(providers_path .. "clang"),
   cssls_lsp = require(providers_path .. "cssls"),
+  dartls_lsp = require(providers_path .. "dartls"),
   emmet_lsp = require(providers_path .. "emmet"),
   eslint_lsp = require(providers_path .. "eslint"),
   json_lsp = require(providers_path .. "json"),
-  -- kotlin_lsp = require(providers_path .. "kotlin"),
   lemminx = require(providers_path .. "xml"),
   lua_lsp = require(providers_path .. "lua"),
   python_lsp = require(providers_path .. "python"),
   rust_lsp = require(providers_path .. "rust"),
-  -- slint_lsp = require(providers_path .. "slint"),
-  -- tailwind_lsp = require(providers_path .. "tailwind"),
   tsserver_lsp = require(providers_path .. "tsserver"),
-  -- vue_lsp = require(providers_path .. "vue"),
 }
 
 for key, _ in next, lsps_table, nil do
