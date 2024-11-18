@@ -1,7 +1,7 @@
 local lint = require("lint")
 
 lint.linters_by_ft = {
-  python = { "pylint" },
+  -- python = { "pylint" },
   javascript = { "eslint_d" },
   typescript = { "eslint_d" },
   typescriptreact = { "eslint_d" },
@@ -21,7 +21,7 @@ lint.linters_by_ft = {
 -- local lint_augroup = vim.api.nvim_create_autocmd("lint", { clear = false })
 -- local lint_augroup = vim.api.nvim_create_autocmd("lint", {})
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
   -- group = lint_augroup,
   callback = function()
     lint.try_lint()

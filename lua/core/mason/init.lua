@@ -11,11 +11,13 @@ require("mason-lspconfig").setup({
     "html",
     "jdtls",
     "jsonls",
-    -- "kotlin_language_server",
+    "ruff",
+    "ruff_lsp",
     "lemminx",
     "lua_ls",
     "marksman",
     "pylsp",
+    "sourcery",
     "quick_lint_js",
     "rust_analyzer",
     "slint_lsp",
@@ -28,8 +30,8 @@ require("mason-lspconfig").setup({
 
 -- Now we're using dap_vscode_js and to manage js
 require("mason-nvim-dap").setup({
-	automatic_installation = true,
-	ensure_installed = {
+  automatic_installation = true,
+  ensure_installed = {
     "firefox",
     "chrome",
     -- "codelldb",
@@ -39,20 +41,19 @@ require("mason-nvim-dap").setup({
     "java-test",
     "python",
   },
-	-- automatic_setup = true,
-	handlers = {
-		function(config)
-			-- all sources with no handler get passed here
+  -- automatic_setup = true,
+  handlers = {
+    function(config)
+      -- all sources with no handler get passed here
 
-			-- Keep original functionality
-			require("mason-nvim-dap").default_setup(config)
-		end,
-		-- firefox = function(config)
-		-- 	require("mason-nvim-dap").default_setup(config)
-		-- end,
-	},
+      -- Keep original functionality
+      require("mason-nvim-dap").default_setup(config)
+    end,
+    -- firefox = function(config)
+    -- 	require("mason-nvim-dap").default_setup(config)
+    -- end,
+  },
 })
-
 
 require("mason-null-ls").setup({
   ensure_installed = {
@@ -76,11 +77,11 @@ require("mason-null-ls").setup({
     "markdownlint",
   },
   methods = {
-          diagnostics = false,
-          formatting = false,
-          code_actions = true,
-          completion = true,
-          hover = true,
-      },
+    diagnostics = false,
+    formatting = false,
+    code_actions = true,
+    completion = true,
+    hover = true,
+  },
   automatic_installation = true,
 })

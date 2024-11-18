@@ -3,7 +3,6 @@ local M = {}
 --- Function to load the params needed for lsp
 ---@param args {} on this case will be on_attach, capabilities and flags
 function M.load(args)
-
   local venv_path = os.getenv("VIRTUAL_ENV")
   local py_path = nil
   -- decide which python executable to use for mypy
@@ -27,12 +26,13 @@ function M.load(args)
           yapf = { enabled = false },
           -- linter options
           pylint = { enabled = true, executable = "pylint" },
-          ruff = { enabled = false },
+          ruff = { enabled = true },
           pyflakes = { enabled = false },
           pycodestyle = { enabled = false },
           -- type checker
           pylsp_mypy = {
-            enabled = true,
+            -- enabled = true,
+            enabled = false,
             overrides = { "--python-executable", py_path, true },
             report_progress = true,
             live_mode = false,
@@ -47,6 +47,25 @@ function M.load(args)
     flags = {
       debounce_text_changes = 200,
     },
+  })
+
+  require("lspconfig").sourcery.setup({
+    on_attach = args.on_attach,
+    flags = args.flags,
+    capabilities = args.capabilities,
+    init_options = {
+      -- token =
+      -- token = MYTOKEN,
+      editor_version = "vim",
+    },
+    filetypes = { "python" },
+    cmd = { "sourcery", "lsp" },
+    -- single_file_support = true,
+    -- init_options = {
+    --   -- use_nvim_notify = true,
+    --   extension_version = "vim.lsp",
+    --   editor_version = "neovim",
+    -- },
   })
 end
 
