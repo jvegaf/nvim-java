@@ -119,8 +119,9 @@ local lsps_table = {
   -- latex_lsp = require(providers_path .. "latex"),
   -- php_lsp = require(providers_path .. "php"),
   -- slint_lsp = require(providers_path .. "slint"),
-  -- tailwind_lsp = require(providers_path .. "tailwind"),
   -- vue_lsp = require(providers_path .. "vue"),
+  -- tailwind_lsp = require(providers_path .. "tailwind"),
+  -- rust_lsp = require(providers_path .. "rust"),
   angular_lsp = require(providers_path .. "angular"),
   arduino_lsp = require(providers_path .. "arduino"),
   clang_lsp = require(providers_path .. "clang"),
@@ -132,7 +133,6 @@ local lsps_table = {
   lemminx = require(providers_path .. "xml"),
   lua_lsp = require(providers_path .. "lua"),
   python_lsp = require(providers_path .. "python"),
-  rust_lsp = require(providers_path .. "rust"),
   tsserver_lsp = require(providers_path .. "tsserver"),
 }
 

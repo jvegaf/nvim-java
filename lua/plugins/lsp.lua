@@ -19,7 +19,7 @@ return {
         },
       },
     },
-    { "simrat39/rust-tools.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },
+    { "simrat39/rust-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "lervag/vimtex" },
     { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
@@ -194,11 +194,11 @@ return {
     require("inlay-hints").setup({
       renderer = "inlay-hints/render/virtline",
     })
-    require("core.lsp")       -- lsp engine
-    require("core.cmp")       -- completion
-    require("core.dap")       -- debuggers management
+    require("core.lsp") -- lsp engine
+    require("core.cmp") -- completion
+    require("core.dap") -- debuggers management
     require("core.formatter") -- formatters
-    require("core.linter")    -- linters
+    require("core.linter") -- linters
     -- require("core.none-ls")
   end,
   -- },

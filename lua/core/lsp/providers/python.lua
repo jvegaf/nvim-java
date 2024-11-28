@@ -12,40 +12,79 @@ function M.load(args)
     py_path = vim.g.python3_host_prog
   end
 
-  require("lspconfig").pylsp.setup({
-    -- unpack(args),
-    capabilities = args.capabilities,
+  -- require("lspconfig").pylsp.setup({
+  --   -- unpack(args),
+  --   capabilities = args.capabilities,
+  --   on_attach = args.on_attach,
+  --   settings = {
+  --     pylsp = {
+  --       plugins = {
+  --         rope = { enabled = true },
+  --         -- formatter options
+  --         black = { enabled = false },
+  --         autopep8 = { enabled = false },
+  --         yapf = { enabled = false },
+  --         -- linter options
+  --         pylint = { enabled = true, executable = "pylint" },
+  --         ruff = { enabled = true },
+  --         pyflakes = { enabled = false },
+  --         pycodestyle = { enabled = false },
+  --         -- type checker
+  --         pylsp_mypy = {
+  --           -- enabled = true,
+  --           enabled = false,
+  --           overrides = { "--python-executable", py_path, true },
+  --           report_progress = true,
+  --           live_mode = false,
+  --         },
+  --         -- auto-completion options
+  --         jedi_completion = { fuzzy = false },
+  --         -- import sorting
+  --         isort = { enabled = true },
+  --       },
+  --     },
+  --   },
+  --   flags = {
+  --     debounce_text_changes = 200,
+  --   },
+  -- })
+
+  require("lspconfig").pyright.setup({
     on_attach = args.on_attach,
+    flags = args.flags,
+    capabilities = args.capabilities,
     settings = {
-      pylsp = {
-        plugins = {
-          rope = { enabled = true },
-          -- formatter options
-          black = { enabled = true },
-          autopep8 = { enabled = false },
-          yapf = { enabled = false },
-          -- linter options
-          pylint = { enabled = true, executable = "pylint" },
-          ruff = { enabled = true },
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          -- type checker
-          pylsp_mypy = {
-            -- enabled = true,
-            enabled = false,
-            overrides = { "--python-executable", py_path, true },
-            report_progress = true,
-            live_mode = false,
-          },
-          -- auto-completion options
-          jedi_completion = { fuzzy = true },
-          -- import sorting
-          isort = { enabled = true },
+      pyright = {
+        -- using Ruff import organizer
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          -- using Ruff for linting
+          ignore = { "*" },
+          -- autoSearchPaths = true,
+          -- useLibraryCodeForTypes = true,
         },
       },
     },
-    flags = {
-      debounce_text_changes = 200,
+  })
+
+  local on_attach = function(client, bufnr)
+    if client.name == "ruff" then
+      -- Disable hover in favor of Pyright
+      client.server_capabilities.hoverProvider = false
+    end
+  end
+
+  require("lspconfig").ruff.setup({
+    on_attach = on_attach,
+    flags = args.flags,
+    capabilities = args.capabilities,
+    trace = "messages",
+    init_options = {
+      settings = {
+        logLevel = "debug",
+      },
     },
   })
 
@@ -54,18 +93,10 @@ function M.load(args)
     flags = args.flags,
     capabilities = args.capabilities,
     init_options = {
-      -- token =
-      -- token = MYTOKEN,
       editor_version = "vim",
     },
     filetypes = { "python" },
     cmd = { "sourcery", "lsp" },
-    -- single_file_support = true,
-    -- init_options = {
-    --   -- use_nvim_notify = true,
-    --   extension_version = "vim.lsp",
-    --   editor_version = "neovim",
-    -- },
   })
 end
 

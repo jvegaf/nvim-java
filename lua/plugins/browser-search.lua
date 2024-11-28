@@ -5,8 +5,8 @@ return {
   },
   event = "VeryLazy",
   keys = {
-    { "<leader>f", "<cmd>VisualSearch<cr>", mode = "v", desc = "Search on web" },
-    { "<leader>s", "<cmd>VisualBookmarks<cr>", mode = "v", desc = "Search on web bookmarks" },
+    { "<leader>ff", "<cmd>VisualSearch<cr>", mode = "v", desc = "Search on web" },
+    { "<leader>fb", "<cmd>VisualBookmarks<cr>", mode = "v", desc = "Search on web bookmarks" },
     { "<leader>fw", "<cmd>InputSearch<cr>", desc = "Search on web" },
   },
   config = function()
@@ -23,6 +23,7 @@ return {
       ["pipy"] = "https://pypi.org/search/?q=%s",
       ["stackoverflow"] = "https://stackoverflow.com/search?q=%s",
       ["youtube"] = "https://www.youtube.com/results?search_query=%s&page=&utm_source=opensearch",
+      ["dotfyle"] = "https://dotfyle.com/neovim/plugins/trending?page=1&amp;q=%s",
     }
 
     local browse = require("browse")

@@ -52,19 +52,27 @@ return {
   -- Find And Replace
   {
     "MagicDuck/grug-far.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    cmd = { "GrugFar" },
-    opts = {
-      keymaps = {
-        replace = "<C-[>",
-        qflist = "<C-q>",
-        gotoLocation = "<enter>",
-        close = "<C-x>",
+    cmd = "GrugFar",
+    opts = { headerMaxWidth = 80 },
+    keys = {
+      {
+        "<leader>sr",
+        function()
+          local grug = require("grug-far")
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          grug.open({
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "Search and Replace",
       },
     },
   },
-  ------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------
   -- Utilities {{{2
   ------------------------------------------------------------------------------
   {

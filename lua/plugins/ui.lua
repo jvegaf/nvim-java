@@ -30,11 +30,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,       -- use a classic bottom cmdline for search
-          command_palette = true,     -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,         -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,     -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
         },
       })
       vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = "#bb9af7", bg = "none" })
@@ -66,15 +66,23 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     keys = {
-      { "<leader>zn", function() require("telescope").extensions.notify.notify() end, desc = "Notifications" },
+      {
+        "<leader>zn",
+        function()
+          require("telescope").extensions.notify.notify()
+        end,
+        desc = "Notifications",
+      },
     },
-    config = function(_, opts)
+    opts = function(_, opts)
       local notify = require("notify")
-      notify.setup()
+      notify.setup({
+        timeout = 1000,
+      })
 
       vim.notify = notify
 
       require("telescope").load_extension("notify")
-    end
+    end,
   },
 }

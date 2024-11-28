@@ -67,6 +67,7 @@ mason_null_ls.setup({
     "eslint_d",
     "prettierd",
     "prettier",
+    "jq",
     "black",
     "isort",
     "pylint",

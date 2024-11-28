@@ -2,29 +2,29 @@ local conform = require("conform")
 
 conform.setup({
   formatters_by_ft = {
-    lua = { "stylua" },
-    python = { "isort", "black" },
-    javascript = { { "prettierd", "prettier" } },
-    javascriptreact = { { "prettierd", "prettier" } },
-    typescript = { { "prettierd", "prettier" } },
-    typescriptreact = { { "prettierd", "prettier" } },
-    vue = { { "prettierd", "prettier" } },
-    json = { { "prettierd", "prettier" } },
-    css = { { "prettierd", "prettier" } },
-    html = { { "prettierd", "prettier" } },
-    yaml = { { "prettierd", "prettier" } },
-    markdown = { { "prettierd", "prettier" } },
-    c = { { "clang-format" } },
-    cpp = { { "clang-format" } },
-    sh = { { "beautysh" } },
-    zsh = { { "beautysh" } },
-    bash = { { "beautysh" } },
-    yaml = { { "yamlfmt" } },
+    lua = { "stylua", lsp_format = "fallback" },
+    -- python = { "isort", "blue" },
+    python = { "ruff" },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+    typescript = { "prettierd", "prettier", stop_after_first = true },
+    typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+    vue = { "prettierd", "prettier", stop_after_first = true },
+    json = { "jq", lsp_format = "fallback" },
+    css = { "prettierd", "prettier", stop_after_first = true },
+    html = { "prettierd", "prettier", stop_after_first = true },
+    yaml = { "yamlfmt", "prettierd", "prettier", stop_after_first = true },
+    markdown = { "prettierd", "prettier", stop_after_first = true },
+    c = { "clang-format", lsp_format = "fallback" },
+    cpp = { "clang-format", lsp_format = "fallback" },
+    sh = { "beautysh", lsp_format = "fallback" },
+    zsh = { "beautysh", lsp_format = "fallback" },
+    bash = { "beautysh", lsp_format = "fallback" },
     -- graphql = { { "prettierd", "prettier" } },
     -- svelte = { { "prettierd", "prettier" } },
     -- kotlin = {  "ktlint" } ,
     -- dart = { { "dartfmt" } },
-    xml = { { "xmlformatter" } },
+    xml = { "xmlformatter", lsp_format = "fallback" },
   },
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
@@ -36,8 +36,6 @@ conform.setup({
       -- These options will be passed to conform.format()
       timeout_ms = 500,
       async = false,
-      lsp_fallback = true,
-      -- lsp_fallback = false,
     }
   end,
 })
@@ -46,7 +44,5 @@ vim.keymap.set({ "n", "v" }, "gq", function()
   conform.format({
     timeout_ms = 500,
     async = false,
-    lsp_fallback = true,
-    -- lsp_fallback = false,
   })
 end, { desc = "[C]ode [F]ormat" })
