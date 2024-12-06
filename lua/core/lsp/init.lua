@@ -134,6 +134,7 @@ local lsps_table = {
   lua_lsp = require(providers_path .. "lua"),
   python_lsp = require(providers_path .. "python"),
   tsserver_lsp = require(providers_path .. "tsserver"),
+  sql_lsp = require(providers_path .. "sql"),
 }
 
 for key, _ in next, lsps_table, nil do
@@ -157,7 +158,7 @@ vim.diagnostic.config({
     focusable = true,
     style = "minimal",
     border = "rounded",
-    source = "always",
+    source = true,
     -- header = "",
     -- prefix = "",
   },

@@ -61,32 +61,32 @@ function M.load(args)
       python = {
         analysis = {
           -- using Ruff for linting
-          ignore = { "*" },
-          -- autoSearchPaths = true,
-          -- useLibraryCodeForTypes = true,
+          -- ignore = { "*" },
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
         },
       },
     },
   })
 
-  local on_attach = function(client, bufnr)
-    if client.name == "ruff" then
-      -- Disable hover in favor of Pyright
-      client.server_capabilities.hoverProvider = false
-    end
-  end
+  -- local on_attach = function(client, bufnr)
+  --   if client.name == "ruff" then
+  --     -- Disable hover in favor of Pyright
+  --     client.server_capabilities.hoverProvider = false
+  --   end
+  -- end
 
-  require("lspconfig").ruff.setup({
-    on_attach = on_attach,
-    flags = args.flags,
-    capabilities = args.capabilities,
-    trace = "messages",
-    init_options = {
-      settings = {
-        logLevel = "debug",
-      },
-    },
-  })
+  -- require("lspconfig").ruff.setup({
+  --   on_attach = on_attach,
+  --   flags = args.flags,
+  --   capabilities = args.capabilities,
+  --   trace = "messages",
+  --   init_options = {
+  --     settings = {
+  --       logLevel = "debug",
+  --     },
+  --   },
+  -- })
 
   require("lspconfig").sourcery.setup({
     on_attach = args.on_attach,

@@ -4,7 +4,7 @@ conform.setup({
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
     -- python = { "isort", "blue" },
-    python = { "ruff" },
+    python = { "ruff", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     javascriptreact = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
