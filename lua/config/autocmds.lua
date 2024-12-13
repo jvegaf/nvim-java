@@ -76,3 +76,11 @@ autocmds("FileType", {
     vim.opt.conceallevel = 0
   end,
 })
+
+autocmds("FileType", {
+  pattern = { "help" },
+  callback = function()
+    vim.opt.wildignore = vim.opt.wildignore + "*.txt"
+  end,
+})
+

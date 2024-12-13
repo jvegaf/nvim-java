@@ -19,7 +19,7 @@ return {
       { "<leader>c", group = " Code" },
       { "<leader>d", group = "󰃤 Debugger" },
       { "<leader>e", group = " FileBrowser" },
-      { "<leader>gh", group = "GitSigns" },
+      { "<leader>gh", group = "󰊢 GitSigns" },
       { "<leader>h", group = " Harpoon" },
       { "<leader>n", group = " Sessions" },
       { "<leader>l", group = " LSP" },
@@ -28,6 +28,9 @@ return {
       { "<leader>u", group = "󱣻 UI" },
       { "<leader>x", group = "󱣻 Diagnostics" },
       { "<leader>z", group = " System" },
+      { "<localleader>l", group = " Linediff" },
+      { "<localleader>q", group = " Quickfix" },
+      { "<localleader>t", group = " Tab" },
       {
         mode = { "n", "v" },
         { "<leader>f", group = " Find" },

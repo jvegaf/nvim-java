@@ -1,4 +1,5 @@
 {
+  "CopilotChat.nvim": { "branch": "main", "commit": "e0d6a5793a1faa0b88a97232bdbb09ea34744c7e" },
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "NeoSolarized.nvim": { "branch": "master", "commit": "bdfcdd056c4c73b10fc6f42f0c2d0df839ff49ae" },
   "actions-preview.nvim": { "branch": "master", "commit": "9f52a01c374318e91337697ebed51c6fae57f8a4" },
@@ -27,6 +28,8 @@
   "cmp-rg": { "branch": "master", "commit": "70a43543f61b6083ba9c3b7deb9ccee671410ac6" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "conform.nvim": { "branch": "master", "commit": "e76afe8f7976071fae308e31bf426f557a8ef339" },
+  "copilot-status.nvim": { "branch": "main", "commit": "decbffa57732f3d257641aea1d5541dd4fe536f6" },
+  "copilot.lua": { "branch": "master", "commit": "d3783b9283a7c35940ed8d71549030d5f5f9f980" },
   "crates.nvim": { "branch": "main", "commit": "8bf8358ee326d5d8c11dcd7ac0bcc9ff97dbc785" },
   "css-vars.nvim": { "branch": "main", "commit": "c63baeff865d45d123491d159d7df309a2d6b15c" },
   "dashboard-nvim": { "branch": "master", "commit": "ae309606940d26d8c9df8b048a6e136b6bbec478" },
@@ -52,7 +55,7 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "259357fa4097e232730341fa60988087d189193a" },
   "inlay-hints.nvim": { "branch": "main", "commit": "006b0898f5d3874e8e528352103733142e705834" },
   "kanagawa.nvim": { "branch": "master", "commit": "ad3dddecd606746374ba4807324a08331dfca23c" },
-  "lazy.nvim": { "branch": "main", "commit": "b97ee167f594c69656f985f919a00435a7bc7045" },
+  "lazy.nvim": { "branch": "main", "commit": "7c493713bc2cb392706866eeba53aaef6c8e9fc6" },
   "lazygit.nvim": { "branch": "main", "commit": "02a7a2789fe9e660ef72bec27df342b15bcca6b7" },
   "legendary.nvim": { "branch": "master", "commit": "ba8452081f63548ce30a8bbc94369c3764cee33c" },
   "linediff.vim": { "branch": "main", "commit": "ddae71ef5f94775d101c1c70032ebe8799f32745" },

@@ -11,7 +11,7 @@ return {
     --- then please see the API below for options
   },
   keys = {
-    { "<leader>fk", "<cmd>Hawtkeys<cr>", desc = "Hawtkeys" },
+    -- { "<leader>fk", "<cmd>Hawtkeys<cr>", desc = "Hawtkeys" },
     { "<leader>fd", "<cmd>HawtkeysDupes<cr>", desc = "Hawtkeys Duplicates" },
   },
 }

@@ -47,17 +47,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { buffer = ev.buf }
-    bufopts.desc = "Diagnostics buffer declarations"
-    keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+    -- bufopts.desc = "Diagnostics buffer declarations"
+    -- keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     -- keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    bufopts.desc = "Diagnostics lsp definitions"
-    keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer hover"
-    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    -- bufopts.desc = "Diagnostics lsp definitions"
+    -- keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer hover"
+    -- keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     -- keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
-    bufopts.desc = "Diagnostics lsp buffer implementation"
+    -- bufopts.desc = "Diagnostics lsp buffer implementation"
     -- keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-    keymap.set("n", "gi", builtin.lsp_implementations, bufopts)
+    -- keymap.set("n", "gi", builtin.lsp_implementations, bufopts)
     -- bufopts.desc = "Diagnostics lsp buffer signature help"
     -- keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
     -- bufopts.desc = "Diagnostics lsp buffer add workspace folder"
@@ -68,11 +68,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keymap.set("n", "<space>wl", function()
     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     -- end, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer type definition"
+    -- bufopts.desc = "Diagnostics lsp buffer type definition"
     -- keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-    keymap.set("n", "<space>D", builtin.lsp_type_definitions, bufopts)
-    bufopts.desc = "Diagnostics lsp buffer rename"
-    keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+    -- keymap.set("n", "<space>D", builtin.lsp_type_definitions, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer rename"
+    -- keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
     -- keymap.set("n", "<space>rn", "<cmd>Lspsaga rename<CR>", bufopts)
     -- bufopts.desc = "Diagnostics lsp project rename"
     -- keymap.set("n", "<space>rp", "<cmd>Lspsaga lsp_rename ++project<CR>", bufopts)
@@ -80,14 +80,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keymap.set("n", "xc", vim.lsp.buf.code_action, bufopts)
     -- keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
     -- keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    bufopts.desc = "Diagnostics lsp references"
-    keymap.set("n", "gr", builtin.lsp_references, bufopts)
+    -- bufopts.desc = "Diagnostics lsp references"
+    -- keymap.set("n", "gr", builtin.lsp_references, bufopts)
     -- bufopts.desc = "Diagnostics document symbols"
     -- keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
 
     -- split definition
-    bufopts.desc = "Diagnostics definition split"
-    keymap.set("n", "<space>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", bufopts)
+    -- bufopts.desc = "Diagnostics definition split"
+    -- keymap.set("n", "<space>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", bufopts)
 
     -- if client.server_capabilities.documentHighlightProvider then
     if client.supports_method("textDocument/documentHighlight") then
@@ -120,13 +120,13 @@ local lsps_table = {
   -- php_lsp = require(providers_path .. "php"),
   -- slint_lsp = require(providers_path .. "slint"),
   -- vue_lsp = require(providers_path .. "vue"),
-  -- tailwind_lsp = require(providers_path .. "tailwind"),
+  tailwind_lsp = require(providers_path .. "tailwind"),
   -- rust_lsp = require(providers_path .. "rust"),
-  angular_lsp = require(providers_path .. "angular"),
+  -- angular_lsp = require(providers_path .. "angular"),
   arduino_lsp = require(providers_path .. "arduino"),
   clang_lsp = require(providers_path .. "clang"),
   cssls_lsp = require(providers_path .. "cssls"),
-  dartls_lsp = require(providers_path .. "dartls"),
+  -- dartls_lsp = require(providers_path .. "dartls"),
   emmet_lsp = require(providers_path .. "emmet"),
   eslint_lsp = require(providers_path .. "eslint"),
   json_lsp = require(providers_path .. "json"),
