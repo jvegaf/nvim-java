@@ -155,6 +155,7 @@ return {
     },
     {
       "nvim-java/nvim-java",
+      enabled= false,
       ft = { "java" },
       dependencies = {
         "nvim-java/lua-async-await",
