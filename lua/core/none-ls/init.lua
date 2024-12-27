@@ -1,4 +1,4 @@
-local null_ls = require("null-ls")
+ocal null_ls = require("null-ls")
 local mason_null_ls = require("mason-null-ls")
 
 local formatting = null_ls.builtins.formatting
@@ -66,7 +66,6 @@ mason_null_ls.setup({
     "dart_format",
     "eslint_d",
     "prettierd",
-    "prettier",
     "jq",
     "black",
     "isort",
