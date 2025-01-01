@@ -41,7 +41,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -53,7 +53,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<C-k>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -67,7 +67,7 @@ cmp.setup({
     -- { name = "copilot",                 group_index = 2 },
     { name = "nvim_lsp",                group_index = 2 },
     { name = "luasnip",                 group_index = 2 }, -- For luasnip users.
-    { name = "crates",                  group_index = 2 }, -- For luasnip users.
+    -- { name = "crates",                  group_index = 2 }, -- For luasnip users.
     { name = "nvim_lsp_signature_help", group_index = 2 },
     { name = "nvim_lua",                group_index = 2 },
     { name = "path",                    group_index = 2 },
@@ -126,10 +126,10 @@ cmp.setup({
       menu = {
         -- copilot = "",
         lua_ls = "[Lua]",
-        crates = "[Crates]",
+        -- crates = "[Crates]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
+        -- latex_symbols = "[Latex]",
         luasnip = "[SNIP]",
         emoji = "[EMOJI]",
         path = "[PATH]",

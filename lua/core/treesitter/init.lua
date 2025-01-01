@@ -7,7 +7,7 @@
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
 	ensure_installed = {
-    "dart",
+    -- "dart",
     "arduino",
     "c",
     "cpp",
@@ -16,13 +16,13 @@ require("nvim-treesitter.configs").setup({
     "json",
     "jsonc",
     "json5",
-    "kotlin",
+    -- "kotlin",
     "lua",
     "python",
-    "ron",
+    -- "ron",
     "rust",
     "sql",
-    "slint",
+    -- "slint",
     "toml",
     "tsx",
     "typescript",
