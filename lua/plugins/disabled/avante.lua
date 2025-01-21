@@ -4,7 +4,8 @@ return {
   lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
-    -- add any opts here
+    provider = 'copilot',
+    auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",

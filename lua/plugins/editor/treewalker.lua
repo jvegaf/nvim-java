@@ -6,7 +6,7 @@ return {
     highlight_group = 'CursorLine',
   },
   keys = {
-    { 'n', '<localleader>d', '<cmd>Treewalker Down<CR>' },
-    { 'n', '<localleader>s', '<cmd>Treewalker Up<CR>' },
+    { 'J', '<cmd>Treewalker Down<CR>', mode = { 'n', 'v' }, desc = 'Treewalker Down' },
+    { 'K', '<cmd>Treewalker Up<CR>',   mode = { 'n', 'v' }, desc = 'Treewalker Up' },
   },
 }
