@@ -133,7 +133,8 @@ local lsps_table = {
   lemminx = require(providers_path .. "xml"),
   lua_lsp = require(providers_path .. "lua"),
   python_lsp = require(providers_path .. "python"),
-  tsserver_lsp = require(providers_path .. "tsserver"),
+  -- tsserver_lsp = require(providers_path .. "tsserver"),
+  tsserver_lsp = require(providers_path .. "vtsls"),
   sql_lsp = require(providers_path .. "sql"),
 }
 

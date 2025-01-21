@@ -10,16 +10,16 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
 
     -- LSP
-    {
-      "pmizio/typescript-tools.nvim",
-      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-      opts = {
-        settings = {
-          code_lens = "all",
-        },
-      },
-    },
-    { "simrat39/rust-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    -- {
+    --   "pmizio/typescript-tools.nvim",
+    --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    --   opts = {
+    --     settings = {
+    --       code_lens = "all",
+    --     },
+    --   },
+    -- },
+    { "simrat39/rust-tools.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },
     { "lervag/vimtex" },
     { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
@@ -155,7 +155,7 @@ return {
     },
     {
       "nvim-java/nvim-java",
-      enabled= false,
+      enabled = false,
       ft = { "java" },
       dependencies = {
         "nvim-java/lua-async-await",
@@ -195,11 +195,11 @@ return {
     require("inlay-hints").setup({
       renderer = "inlay-hints/render/virtline",
     })
-    require("core.lsp") -- lsp engine
-    require("core.cmp") -- completion
-    require("core.dap") -- debuggers management
+    require("core.lsp")       -- lsp engine
+    require("core.cmp")       -- completion
+    require("core.dap")       -- debuggers management
     require("core.formatter") -- formatters
-    require("core.linter") -- linters
+    require("core.linter")    -- linters
     -- require("core.none-ls")
   end,
   -- },

@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- Session Management
-opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Line Numbers
 opt.relativenumber = true
@@ -35,6 +35,8 @@ vim.diagnostic.config {
   float = { border = "rounded" }, -- add border to diagnostic popups
 }
 
+opt.laststatus = 3
+
 -- Backspace
 opt.backspace = "indent,eol,start"
 
@@ -56,4 +58,3 @@ opt.foldlevel = 10
 opt.foldlevelstart = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
-
