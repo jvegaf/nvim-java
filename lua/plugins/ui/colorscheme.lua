@@ -144,10 +144,13 @@ return {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      style = 'deep',
-      transparent = true,
-    },
+    config = function()
+      require('onedark').setup({
+        style = 'deep',
+        transparent = true,
+      })
+      require('onedark').load()
+    end,
   },
   {
     "catppuccin/nvim",
