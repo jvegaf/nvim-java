@@ -61,12 +61,12 @@ return {
     opts = {
       spec = {
         { "<leader>a", group = "+AI" },
-        { "gm", group = "+Copilot chat" },
-        { "gmh", desc = "Show help" },
-        { "gmd", desc = "Show diff" },
-        { "gmp", desc = "Show system prompt" },
-        { "gms", desc = "Show selection" },
-        { "gmy", desc = "Yank diff" },
+        { "gm",        group = "+Copilot chat" },
+        { "gmh",       desc = "Show help" },
+        { "gmd",       desc = "Show diff" },
+        { "gmp",       desc = "Show system prompt" },
+        { "gms",       desc = "Show selection" },
+        { "gmy",       desc = "Yank diff" },
       },
     },
   },
@@ -75,7 +75,7 @@ return {
     branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
     },
     opts = {
       question_header = "## User ",
@@ -201,10 +201,10 @@ return {
         desc = "CopilotChat - Prompt actions",
       },
       -- Code related commands
-      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
-      { "<leader>ar", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
-      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>",       desc = "CopilotChat - Explain code" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>",         desc = "CopilotChat - Generate tests" },
+      { "<leader>ar", "<cmd>CopilotChatReview<cr>",        desc = "CopilotChat - Review code" },
+      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>",      desc = "CopilotChat - Refactor code" },
       { "<leader>an", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
       -- Chat with Copilot in visual mode
       {
@@ -244,15 +244,15 @@ return {
         desc = "CopilotChat - Quick chat",
       },
       -- Debug
-      { "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
+      { "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>",     desc = "CopilotChat - Debug Info" },
       -- Fix the issue with diagnostic
       { "<leader>af", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
       -- Clear buffer and chat history
-      { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
+      { "<leader>al", "<cmd>CopilotChatReset<cr>",         desc = "CopilotChat - Clear buffer and chat history" },
       -- Toggle Copilot Chat Vsplit
-      { "<leader>av", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+      { "<leader>av", "<cmd>CopilotChatToggle<cr>",        desc = "CopilotChat - Toggle" },
       -- Copilot Chat Models
-      { "<leader>a?", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
+      { "<leader>a?", "<cmd>CopilotChatModels<cr>",        desc = "CopilotChat - Select Models" },
     },
   },
   {
@@ -267,37 +267,6 @@ return {
             function() return require("copilot_status").status_string() end,
             cnd = function() return require("copilot_status").enabled() end,
           },
-        },
-      }
-    end,
-  },
-  {
-    "monkoose/neocodeium",
-    event = "VeryLazy",
-    enabled = false,
-    -- enabled = vim.fn.has "nvim-0.10" == 1,
-    -- enabled = false,
-    config = function()
-      local neocodeium = require "neocodeium"
-      neocodeium.setup()
-      vim.keymap.set("i", "<A-f>", neocodeium.accept)
-      vim.keymap.set("i", "<A-w>", function() require("neocodeium").accept_word() end)
-      vim.keymap.set("i", "<A-l>", function() require("neocodeium").accept_line() end)
-      vim.keymap.set("i", "<A-j>", function() require("neocodeium").cycle_or_complete() end)
-      vim.keymap.set("i", "<A-k>", function() require("neocodeium").cycle_or_complete(-1) end)
-      vim.keymap.set("i", "<A-x>", function() require("neocodeium").clear() end)
-    end,
-  },
-  {
-    "supermaven-inc/supermaven-nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      require("supermaven-nvim").setup {
-        keymaps = {
-          accept_suggestion = "<M-f>",
-          clear_suggestion = "<C-]>",
-          accept_word = "<M-w>",
         },
       }
     end,
