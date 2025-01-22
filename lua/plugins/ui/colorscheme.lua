@@ -149,7 +149,7 @@ return {
         style = 'deep',
         transparent = true,
       })
-      -- require('onedark').load()
+      require('onedark').load()
     end,
   },
   {
