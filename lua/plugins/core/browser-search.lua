@@ -20,6 +20,8 @@ return {
         ["pulls_search"] = "https://github.com/search?q=%s&type=pullrequests",
       },
       ["npm"] = "https://www.npmjs.com/search?q=%s",
+      ["pubdev"] = "https://pub.dev/packages?q=%s",
+      ["crates"] = "https://crates.io/search?q=%s",
       ["pipy"] = "https://pypi.org/search/?q=%s",
       ["stackoverflow"] = "https://stackoverflow.com/search?q=%s",
       ["youtube"] = "https://www.youtube.com/results?search_query=%s&page=&utm_source=opensearch",

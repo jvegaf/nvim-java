@@ -42,6 +42,7 @@ return {
   },
   {
     "alexpasmantier/pymple.nvim",
+    enabled = false,
     event = "VeryLazy",
     -- ft = { "python" },
     dependencies = {
