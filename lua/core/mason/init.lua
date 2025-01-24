@@ -29,7 +29,7 @@ require("mason-lspconfig").setup({
   --   "ts_ls",
   --   "yamlls",
   -- },
-  -- ensure_installed = { "lua_ls", "tsserver", "jdtls", "angularls", "bashls" },
+  ensure_installed = { "lua_ls", "vtsls", "bashls" },
   automatic_installation = true,
 })
 
