@@ -10,15 +10,17 @@ local NS = { noremap = true, silent = true }
 
 -- General keymaps
 keymap.set("i", "jk", "<ESC>", NS)           -- exit insert mode with jk
-keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>", NS)  -- quit without saving
 keymap.set("n", "W", ":w<CR>", NS)           -- save
-keymap.set("n", "Q", ":bd<CR>", NS)     -- close buffer
+keymap.set("n", "Q", ":Bdelete<CR>", NS)     -- close buffer
+keymap.set("v", "y", "myy`y", NS)     -- close buffer
 
 -- Buffers
 keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
 keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
+keymap.set("n", "<leader><Space>", ":Telecope buffers<cr>", NS)
+
 
 -- Split window management
 -- keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -89,11 +91,9 @@ keymap.set("n", "<leader>h7", function() require("harpoon.ui").nav_file(7) end)
 keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) end)
 keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
 
--- Vim REST Console
-keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
-
 -- LSP
-keymap.set("n", "<leader>lI", ":LspInfo<cr>", { desc = "LSP Info" })
+keymap.set("n", "<leader>li", ":LspInfo<cr>", { desc = "LSP Info" })
+keymap.set("n", "<leader>lr", ":LspReset<cr>", { desc = "LSP Reset" })
 -- keymap.set("n", "K", function() vim.lsp.buf.hover() end, NS)
 -- keymap.set({ "v", "n" }, "<leader>xc", require("actions-preview").code_actions, { desc = "Code Actions" })
 -- keymap.set("n", "gd", function() builtin.lsp_definitions({ reuse_win = true }) end, { desc = "definition" })

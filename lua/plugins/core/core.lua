@@ -7,7 +7,7 @@ return {
   "nvim-lua/plenary.nvim",
   "nvim-tree/nvim-web-devicons",
   "b0o/schemastore.nvim",
-  -- { 'lewis6991/fileline.nvim', lazy = false },
+  { 'moll/vim-bbye', lazy = false },
   -- { 'axlebedev/vim-footprints', lazy = false },
   -- }}}
   {

@@ -62,6 +62,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bufopts.desc = "Diagnostics lsp buffer signature help"
     keymap.set("n", "gK", vim.lsp.buf.signature_help, bufopts)
 
+    bufopts.desc = "Diagnostics lsp buffer"
+    keymap.set("n", "<leader>xx", builtin.diagnostics, bufopts)
+
     -- bufopts.desc = "Diagnostics lsp buffer add workspace folder"
     -- keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 
