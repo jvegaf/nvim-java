@@ -41,7 +41,8 @@ opt.laststatus = 3
 opt.backspace = "indent,eol,start"
 
 -- Clipboard
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
+opt.clipboard = "unnamedplus"
 
 -- Split Windows
 opt.splitright = true
@@ -58,3 +59,8 @@ opt.foldlevel = 10
 opt.foldlevelstart = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
+
+-- Undo
+opt.undofile = true
+opt.undodir = vim.fn.stdpath("data") .. "/undo"
+opt.undolevels = 1000

@@ -55,7 +55,7 @@ keymap.set("n", "<localleader>ql", ":clast<CR>")  -- jump to last quickfix list 
 keymap.set("n", "<localleader>qc", ":cclose<CR>") -- close quickfix list
 
 -- Vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
+-- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
 -- FileBrowser
 -- keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>")          -- toggle file explorer

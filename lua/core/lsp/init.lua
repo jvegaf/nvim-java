@@ -35,9 +35,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    local filetype = vim.api.nvim_get_option_value(0, "filetype")
+    local filetype = vim.bo.filetype
 
-    if client.server_capabilities.documentSymbolProvider then
+    if client and client.server_capabilities.documentSymbolProvider then
       navic.attach(client, bufnr)
     end
 
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bufopts.desc = "Diagnostics lsp definitions"
     keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
 
-    bufopts.desc = "Diagnostics lsp buffer hover"
+  bufopts.desc = "Diagnostics lsp buffer hover"
     keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 
     bufopts.desc = "Diagnostics lsp buffer implementation"
