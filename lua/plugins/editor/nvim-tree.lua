@@ -1,5 +1,4 @@
 return {
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -142,10 +141,14 @@ return {
   },
   {
     "antosha417/nvim-lsp-file-operations",
-    event = "VeryLazy",
+    event = "VimEnter",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-tree.lua",
     },
+    opts = {},
+    config = function(_,opts)
+      require("nvim-lsp-file-operations").setup(opts)
+    end,
   },
 }
