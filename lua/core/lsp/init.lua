@@ -21,9 +21,9 @@ local mappingOpts = { noremap = true, silent = true }
 -- mappingOpts.desc = "Diagnostics float"
 -- keymap.set("n", "xe", vim.diagnostic.open_float, mappingOpts)
 mappingOpts.desc = "Diagnostics goto prev"
-keymap.set("n", "gk", vim.diagnostic.goto_prev, mappingOpts)
+keymap.set("n", "gk", vim.lsp.diagnostic.goto_prev, mappingOpts)
 mappingOpts.desc = "Diagnostics goto next"
-keymap.set("n", "gj", vim.diagnostic.goto_next, mappingOpts)
+keymap.set("n", "gj", vim.lsp.diagnostic.goto_next, mappingOpts)
 -- mappingOpts.desc = "Diagnostics goto setloclist"
 -- keymap.set("n", "xq", vim.diagnostic.setloclist, mappingOpts)
 
@@ -62,8 +62,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bufopts.desc = "Diagnostics lsp buffer signature help"
     keymap.set("n", "gK", vim.lsp.buf.signature_help, bufopts)
 
-    bufopts.desc = "Diagnostics lsp buffer"
-    keymap.set("n", "<leader>xx", builtin.diagnostics, bufopts)
+    -- bufopts.desc = "Diagnostics lsp buffer"
+    -- keymap.set("n", "<leader>xx", builtin.diagnostics, bufopts)
 
     -- bufopts.desc = "Diagnostics lsp buffer add workspace folder"
     -- keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keymap.set("n", "<space>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", bufopts)
 
     -- if client.server_capabilities.documentHighlightProvider then
-    if client.supports_method("textDocument/documentHighlight") then
+    if client and client.supports_method("textDocument/documentHighlight") then
       vim.cmd([[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
