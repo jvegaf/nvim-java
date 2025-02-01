@@ -25,8 +25,8 @@ return {
     keys = {
       -- stylua: ignore
       {
-        "<leader>fs",
-        function() require'telescope'.extensions.luasnip.luasnip{} end,
+        "<leader>fS",
+        function() require 'telescope'.extensions.luasnip.luasnip {} end,
         desc = "Search snippets",
       },
     },

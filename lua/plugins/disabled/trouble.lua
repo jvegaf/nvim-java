@@ -2,7 +2,6 @@ return {
   {
     "folke/trouble.nvim",
     event = "VeryLazy",
-    enabled = false,
     keys = {
       {
         "<leader>xX",
@@ -36,18 +35,5 @@ return {
       },
     },
     opts = { use_diagnostic_signs = true },
-  },
-  {
-    "aznhe21/actions-preview.nvim",
-    lazy = false,
-    opts = {},
-    keys = {
-      {
-        "<leader>xa",
-        "<cmd> lua require('actions-preview').code_actions <cr>",
-        mode = { "n", "v" },
-        desc = "Code Actions",
-      },
-    },
   },
 }

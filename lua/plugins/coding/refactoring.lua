@@ -34,7 +34,7 @@ return {
     },
     { "<leader>rb", "<cmd>lua require('refactoring').refactor('Extract Block')<cr>", desc = "Extract Block" },
     {
-      "<leader>rbf",
+      "<leader>rB",
       "<cmd>lua require('refactoring').refactor('Extract Block To File')<cr>",
       desc = "Extract Block to file",
     },

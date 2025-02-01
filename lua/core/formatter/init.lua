@@ -40,6 +40,10 @@ conform.setup({
   end,
 })
 
+require("mason-conform").setup({
+    ignore_install = {'prettier'}
+})
+
 vim.keymap.set({ "n", "v" }, "gq", function()
   conform.format({
     timeout_ms = 500,

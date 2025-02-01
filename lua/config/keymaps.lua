@@ -13,7 +13,7 @@ keymap.set("i", "jk", "<ESC>", NS)           -- exit insert mode with jk
 keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>", NS)  -- quit without saving
 keymap.set("n", "W", ":w<CR>", NS)           -- save
-keymap.set("n", "Q", ":bdelete<CR>", NS)     -- close buffer
+keymap.set("n", "Q", ":bd<CR>", NS)     -- close buffer
 
 -- Buffers
 keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
@@ -56,8 +56,8 @@ keymap.set("n", "<localleader>qc", ":cclose<CR>") -- close quickfix list
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
 -- FileBrowser
-keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>")          -- toggle file explorer
-keymap.set("n", "<leader>er", ":Telescope file_browser<CR>") -- toggle focus to file explorer
+-- keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>")          -- toggle file explorer
+keymap.set("n", "<leader>E", ":Telescope file_browser<CR>") -- toggle focus to file explorer
 
 -- Telescope
 keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
@@ -94,26 +94,26 @@ keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
 keymap.set("n", "<leader>lI", ":LspInfo<cr>", { desc = "LSP Info" })
-keymap.set("n", "K", function() vim.lsp.buf.hover() end, NS)
-keymap.set({ "v", "n" }, "<leader>xc", require("actions-preview").code_actions, { desc = "Code Actions" })
-keymap.set("n", "gd", function() builtin.lsp_definitions({ reuse_win = true }) end, { desc = "definition" })
-keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Goto Declaration" })
-keymap.set("n", "gI", function() builtin.lsp_implementations({ reuse_win = true }) end, { desc = "Goto implementation" })
-keymap.set("n", "gy", function() builtin.lsp_type_definitions({ reuse_win = true }) end,
-  { desc = "Goto type_definition" })
-keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
-keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
-keymap.set("n", "gr", function() builtin.lsp_references({ reuse_win = true }) end, { desc = "References" })
-keymap.set("n", "gK", function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
-keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, { desc = "Rename Buffer" })
+-- keymap.set("n", "K", function() vim.lsp.buf.hover() end, NS)
+-- keymap.set({ "v", "n" }, "<leader>xc", require("actions-preview").code_actions, { desc = "Code Actions" })
+-- keymap.set("n", "gd", function() builtin.lsp_definitions({ reuse_win = true }) end, { desc = "definition" })
+-- keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Goto Declaration" })
+-- keymap.set("n", "gI", function() builtin.lsp_implementations({ reuse_win = true }) end, { desc = "Goto implementation" })
+-- keymap.set("n", "gy", function() builtin.lsp_type_definitions({ reuse_win = true }) end,
+--   { desc = "Goto type_definition" })
+-- keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
+-- keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
+-- keymap.set("n", "gr", function() builtin.lsp_references({ reuse_win = true }) end, { desc = "References" })
+-- keymap.set("n", "gK", function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
+-- keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, { desc = "Rename Buffer" })
 -- keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', { desc = "format buffer"})
 -- keymap.set({ 'n', 'v' }, 'gq', function() require("conform").format({ async = true, lsp_format = "fallback" }) end, { desc = "Format"})
 -- keymap.set('n', '<leader>xc', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action"})
 -- keymap.set('n', '<leader>xx', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open Float"})
-keymap.set("n", "gk", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
-keymap.set("n", "gj", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
-keymap.set("n", "gS", function() vim.lsp.buf.document_symbol() end, { desc = "Document Symbol" })
-keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion({ bufnr = 0 }) end, { desc = "References" })
+-- keymap.set("n", "gk", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
+-- keymap.set("n", "gj", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
+-- keymap.set("n", "gS", function() vim.lsp.buf.document_symbol() end, { desc = "Document Symbol" })
+-- keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion({ bufnr = 0 }) end, { desc = "References" })
 
 -- Filetype-specific keymaps (these can be done in the ftplugin directory instead if you prefer)
 

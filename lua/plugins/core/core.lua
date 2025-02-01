@@ -12,7 +12,7 @@ return {
   -- }}}
   {
     "cappyzawa/trim.nvim",
-    event = "BufWrite",
+    event = "BufWritePre",
     opts = {
       trim_on_write = true,
       trim_trailing = true,
@@ -49,29 +49,6 @@ return {
   --   end,
   -- },
   ------------------------------------------------------------------------------
-  -- Find And Replace
-  {
-    "MagicDuck/grug-far.nvim",
-    cmd = "GrugFar",
-    opts = { headerMaxWidth = 80 },
-    keys = {
-      {
-        "<leader>sr",
-        function()
-          local grug = require("grug-far")
-          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-          grug.open({
-            transient = true,
-            prefills = {
-              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-            },
-          })
-        end,
-        mode = { "n", "v" },
-        desc = "Search and Replace",
-      },
-    },
-  },
   ----------------------------------------------------------------------------
   -- Utilities {{{2
   ------------------------------------------------------------------------------
@@ -86,7 +63,7 @@ return {
       require("bigfile").setup(opts)
     end,
   },
-  { "will133/vim-dirdiff", cmd = { "DirDiff" } },
+  { "will133/vim-dirdiff",    cmd = { "DirDiff" } },
   {
     "AndrewRadev/linediff.vim",
     cmd = "Linediff",
@@ -99,7 +76,7 @@ return {
     cmd = { "UrlView" },
     keys = {
       { "<leader>bu", "<cmd>UrlView buffer<cr>", desc = "urlview: buffers" },
-      { "<leader>zu", "<cmd>UrlView lazy<cr>", desc = "urlview: lazy" },
+      { "<leader>zu", "<cmd>UrlView lazy<cr>",   desc = "urlview: lazy" },
       {
         "<leader>bU",
         "<cmd>UrlView buffer action=clipboard<cr>",
@@ -129,38 +106,13 @@ return {
     end,
   },
   {
-    "luckasRanarison/nvim-devdocs",
-    -- stylua: ignore
-    keys = {
-      { '<leader>vf', '<cmd>DevdocsOpenFloat<CR>', desc = 'devdocs: open float', },
-      { '<leader>vb', '<cmd>DevdocsOpen<CR>', desc = 'devdocs: open in buffer', },
-      { '<leader>vo', '<cmd>DevdocsOpenFloat ', desc = 'devdocs: open documentation', },
-      { '<leader>vi', '<cmd>DevdocsInstall ', desc = 'devdocs: install' },
-      { '<leader>vu', '<cmd>DevdocsUninstall ', desc = 'devdocs: uninstall' },
-    },
-    opts = {
-      -- stylua: ignore
-      ensure_installed = {
-        'git', 'bash', 'lua-5.4', 'html', 'css', 'javascript', 'typescript',
-        'react', 'java', 'electron', 'dart', 'kotlin', 'yarn', 'sqlite',
-        'spring_boot', 'docker', 'eslint',
-      },
-      wrap = true,
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-  {
     "normen/vim-pio",
     event = "VeryLazy",
   },
   -- }}}
   --------------------------------------------------------------------------------
   -- Share Code
-  { "TobinPalmer/rayso.nvim", cmd = { "Rayso" }, opts = {} },
+  { "TobinPalmer/rayso.nvim", cmd = { "Rayso" },  opts = {} },
   {
     "ethanholz/freeze.nvim",
     cmd = "Freeze",

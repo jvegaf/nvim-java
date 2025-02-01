@@ -5,4 +5,12 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   opts = {},
+  keys = {
+    {
+      "<leader>xa",
+      "<cmd>lua require('actions-preview').code_actions<cr>",
+      mode = { "n", "v" },
+      desc = "Code Actions",
+    },
+  },
 }

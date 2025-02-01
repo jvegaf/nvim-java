@@ -6,22 +6,23 @@ return {
     "williamboman/mason.nvim",
     -- Mason
     "williamboman/mason-lspconfig.nvim",
-    "jay-babu/mason-null-ls.nvim",
     "jay-babu/mason-nvim-dap.nvim",
 
     -- LSP
-    -- {
-    --   "pmizio/typescript-tools.nvim",
-    --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    --   opts = {
-    --     settings = {
-    --       code_lens = "all",
-    --     },
-    --   },
-    -- },
-    { "simrat39/rust-tools.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },
+    {
+      "yioneko/nvim-vtsls",
+      dependencies = {
+        "stevearc/dressing.nvim",
+        "antosha417/nvim-lsp-file-operations",
+      },
+      opts = {},
+      config = function(_, opts)
+        require("vtsls").config(opts)
+      end,
+    },
+    { "simrat39/rust-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "lervag/vimtex" },
-    { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    -- { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
     -- CMP
     {
@@ -99,7 +100,6 @@ return {
       },
     },
 
-    -- NULL-LS
     "nvim-lua/plenary.nvim",
 
     -- Formatter
@@ -110,9 +110,27 @@ return {
       --   require("core.formatter") -- formatters
       -- end,
     },
+    {
+      "zapling/mason-conform.nvim",
+      event = "BufReadPre",
+      config = true,
+      dependencies = {
+        "williamboman/mason.nvim",
+        "stevearc/conform.nvim",
+      },
+    },
 
     -- Linters
     { "mfussenegger/nvim-lint" },
+    {
+      "rshkarin/mason-nvim-lint",
+      event = "BufReadPre",
+      config = true,
+      dependencies = {
+        "williamboman/mason.nvim",
+        "mfussenegger/nvim-lint",
+      },
+    },
 
     -- UI Tools
     -- {
@@ -139,9 +157,9 @@ return {
       opts = { lsp = { auto_attach = true } },
     },
     -- formatter / linter
-    {
-      "nvimtools/none-ls.nvim",
-    },
+    -- {
+    --   "nvimtools/none-ls.nvim",
+    -- },
 
     -- References made easy
     {
@@ -197,9 +215,9 @@ return {
     })
     require("core.lsp")       -- lsp engine
     require("core.cmp")       -- completion
-    require("core.dap")       -- debuggers management
     require("core.formatter") -- formatters
     require("core.linter")    -- linters
+    require("core.dap")       -- debuggers management
     -- require("core.none-ls")
   end,
   -- },

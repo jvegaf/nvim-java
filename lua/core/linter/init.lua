@@ -13,10 +13,11 @@ lint.linters_by_ft = {
   bash = { "shellcheck" },
   zsh = { "shellcheck" },
   -- lua = { "luacheck" },
-  c = { "clang_tidy" },
-  cpp = { "clang_tidy" },
+  -- c = { "clang_tidy" },
+  -- cpp = { "clang_tidy" },
 }
 
+require("mason-nvim-lint").setup()
 -- local lint_augroup = vim.api.nvim_create_autocmd("lint", { clear = true })
 -- local lint_augroup = vim.api.nvim_create_autocmd("lint", { clear = false })
 -- local lint_augroup = vim.api.nvim_create_autocmd("lint", {})

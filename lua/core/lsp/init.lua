@@ -17,13 +17,13 @@ local keymap = vim.keymap
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- local mappingOpts = { noremap = true, silent = true }
+local mappingOpts = { noremap = true, silent = true }
 -- mappingOpts.desc = "Diagnostics float"
 -- keymap.set("n", "xe", vim.diagnostic.open_float, mappingOpts)
--- mappingOpts.desc = "Diagnostics goto prev"
--- keymap.set("n", "xo", vim.diagnostic.goto_prev, mappingOpts)
--- mappingOpts.desc = "Diagnostics goto next"
--- keymap.set("n", "xp", vim.diagnostic.goto_next, mappingOpts)
+mappingOpts.desc = "Diagnostics goto prev"
+keymap.set("n", "gk", vim.diagnostic.goto_prev, mappingOpts)
+mappingOpts.desc = "Diagnostics goto next"
+keymap.set("n", "gj", vim.diagnostic.goto_next, mappingOpts)
 -- mappingOpts.desc = "Diagnostics goto setloclist"
 -- keymap.set("n", "xq", vim.diagnostic.setloclist, mappingOpts)
 
@@ -47,43 +47,46 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { buffer = ev.buf }
-    -- bufopts.desc = "Diagnostics buffer declarations"
-    -- keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    -- keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    -- bufopts.desc = "Diagnostics lsp definitions"
-    -- keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer hover"
-    -- keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    -- keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer implementation"
-    -- keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-    -- keymap.set("n", "gi", builtin.lsp_implementations, bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer signature help"
-    -- keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
+    bufopts.desc = "Diagnostics buffer declarations"
+    keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+
+    bufopts.desc = "Diagnostics lsp definitions"
+    keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer hover"
+    keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer implementation"
+    keymap.set("n", "gI", builtin.lsp_implementations, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer signature help"
+    keymap.set("n", "gK", vim.lsp.buf.signature_help, bufopts)
+
     -- bufopts.desc = "Diagnostics lsp buffer add workspace folder"
     -- keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+
     -- bufopts.desc = "Diagnostics lsp buffer remove workspace folder"
     -- keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer list workspace folders"
-    -- keymap.set("n", "<space>wl", function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer type definition"
-    -- keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-    -- keymap.set("n", "<space>D", builtin.lsp_type_definitions, bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer rename"
-    -- keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-    -- keymap.set("n", "<space>rn", "<cmd>Lspsaga rename<CR>", bufopts)
-    -- bufopts.desc = "Diagnostics lsp project rename"
-    -- keymap.set("n", "<space>rp", "<cmd>Lspsaga lsp_rename ++project<CR>", bufopts)
-    -- bufopts.desc = "Diagnostics lsp buffer code action"
-    -- keymap.set("n", "xc", vim.lsp.buf.code_action, bufopts)
-    -- keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
-    -- keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    -- bufopts.desc = "Diagnostics lsp references"
-    -- keymap.set("n", "gr", builtin.lsp_references, bufopts)
-    -- bufopts.desc = "Diagnostics document symbols"
-    -- keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer list workspace folders"
+    keymap.set("n", "<leader>xl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer type definition"
+    keymap.set("n", "gy", builtin.lsp_type_definitions, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer rename"
+    keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+
+    bufopts.desc = "Diagnostics lsp buffer code action"
+    keymap.set("n", "<leader>xc", vim.lsp.buf.code_action, bufopts)
+
+    bufopts.desc = "Diagnostics lsp references"
+    keymap.set("n", "gr", builtin.lsp_references, bufopts)
+
+    bufopts.desc = "Diagnostics document symbols"
+    keymap.set("n", "<leader>lS", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
 
     -- split definition
     -- bufopts.desc = "Diagnostics definition split"
@@ -126,15 +129,14 @@ local lsps_table = {
   arduino_lsp = require(providers_path .. "arduino"),
   clang_lsp = require(providers_path .. "clang"),
   cssls_lsp = require(providers_path .. "cssls"),
-  dartls_lsp = require(providers_path .. "dartls"),
+  -- dartls_lsp = require(providers_path .. "dartls"),
   -- emmet_lsp = require(providers_path .. "emmet"),
   eslint_lsp = require(providers_path .. "eslint"),
   json_lsp = require(providers_path .. "json"),
   lemminx = require(providers_path .. "xml"),
   lua_lsp = require(providers_path .. "lua"),
   python_lsp = require(providers_path .. "python"),
-  -- tsserver_lsp = require(providers_path .. "tsserver"),
-  tsserver_lsp = require(providers_path .. "vtsls"),
+  vtsls = require(providers_path .. "vtsls"),
   sql_lsp = require(providers_path .. "sql"),
 }
 

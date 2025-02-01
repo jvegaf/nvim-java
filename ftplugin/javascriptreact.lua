@@ -5,11 +5,11 @@ end
 
 wk.add({
   { "<leader>C", group = "JavascriptReact" },
-  { "<leader>Ci", "<cmd>TSToolsAddMissingImports<Cr>", "AddMissingImports" },
-  { "<leader>Co", "<cmd>TSToolsOrganizeImports<Cr>", "OrganizeImports" },
-  { "<leader>Cu", "<cmd>TSToolsRemoveUnused<Cr>", "RemoveUnused" },
-  { "<leader>Cr", "<cmd>TSToolsRenameFile<Cr>", "RenameFile" },
-  { "<leader>Cf", "<cmd>TSToolsFixAll<Cr>", "FixAll" },
-  { "<leader>Cg", "<cmd>TSToolsGoToSourceDefinition<Cr>", "GoToSourceDefinition" },
-  { "<leader>CR", "<cmd>TSToolsFileReferences<Cr>", "Find File References" },
+  { "<leader>Ci", "<cmd>VtsExec add_missing_imports<Cr>", "Add Missing Imports" },
+  { "<leader>Co", "<cmd>VtsExec organize_imports<Cr>", "Organize Imports" },
+  { "<leader>Cu", "<cmd>VtsExec remove_unused<Cr>", "Remove Unused" },
+  { "<leader>Cr", "<cmd>VtsExec rename_file<Cr>", "Rename File" },
+  { "<leader>Cf", "<cmd>VtsExec fix_all<Cr>", "FixAll" },
+  { "<leader>Cg", "<cmd>VtsExec goto_source_definition<Cr>", "GoToSourceDefinition" },
+  { "<leader>CR", "<cmd>VtsExec file_references<Cr>", "Find File References" },
 })
