@@ -148,7 +148,7 @@ return {
     },
     opts = {},
     config = function(_,opts)
-      require("nvim-lsp-file-operations").setup(opts)
+      require("lsp-file-operations").setup(opts)
     end,
   },
 }
