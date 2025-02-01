@@ -16,7 +16,7 @@ autocmds({ "FileType" }, {
 augroup("YankHighlight", { clear = true })
 autocmds("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = "YankHighlight",
   pattern = "*",
