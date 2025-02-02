@@ -1,3 +1,4 @@
+---@diagnostic disable: deprecated
 return {
   "nvim-lualine/lualine.nvim",
   event = "BufWinEnter",
@@ -11,7 +12,7 @@ return {
       -- local msg = "No Active Lsp"
       local msg = ""
       local buf_ft = vim.bo.filetype
-      local clients = vim.lsp.get_clients()
+      local clients = vim.lsp.get_active_clients()
       if next(clients) == nil then
         return msg
       end

@@ -21,9 +21,9 @@ local mappingOpts = { noremap = true, silent = true }
 -- mappingOpts.desc = "Diagnostics float"
 -- keymap.set("n", "xe", vim.diagnostic.open_float, mappingOpts)
 mappingOpts.desc = "Diagnostics goto prev"
-keymap.set("n", "gk", vim.lsp.diagnostic.goto_prev, mappingOpts)
+keymap.set("n", "gk", vim.diagnostic.get_prev, mappingOpts)
 mappingOpts.desc = "Diagnostics goto next"
-keymap.set("n", "gj", vim.lsp.diagnostic.goto_next, mappingOpts)
+keymap.set("n", "gj", vim.diagnostic.get_next, mappingOpts)
 -- mappingOpts.desc = "Diagnostics goto setloclist"
 -- keymap.set("n", "xq", vim.diagnostic.setloclist, mappingOpts)
 
