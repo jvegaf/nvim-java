@@ -4,10 +4,10 @@ return {
     event = "BufReadPre",
     opts = {},
     keys = {
-      { "<leader>ns", "<cmd>lua require('persistence').load()<cr>", desc = "Restore Session" },
-      { "<leader>nS", "<cmd>lua require('persistence').select()<cr>", desc = "Select Session" },
-      { "<leader>nl", "<cmd>lua require('persistence').load({ last = true })<cr>", desc = "Restore Last Session" },
-      { "<leader>nd", "<cmd>lua require('persistence').stop()<cr>", desc = "Don't Save Session" },
+      { "<leader>ss", "<cmd>lua require('persistence').load()<cr>", desc = "Restore Session" },
+      { "<leader>sS", "<cmd>lua require('persistence').select()<cr>", desc = "Select Session" },
+      { "<leader>sl", "<cmd>lua require('persistence').load({ last = true })<cr>", desc = "Restore Last Session" },
+      { "<leader>sd", "<cmd>lua require('persistence').stop()<cr>", desc = "Don't Save Session" },
     },
   },
   {
