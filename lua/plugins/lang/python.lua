@@ -1,7 +1,7 @@
 return {
   {
     "jim-at-jibba/micropython.nvim",
-    enabled = false,
+    -- enabled = false,
     event = "VeryLazy",
     dependencies = { "akinsho/toggleterm.nvim", "stevearc/dressing.nvim" },
     config = function() vim.keymap.set("n", "<leader>mr", require("micropython_nvim").run) end,
@@ -10,13 +10,13 @@ return {
     "stevanmilic/nvim-lspimport",
     ft = { "python" },
     event = "VeryLazy",
-    keys = { { "<leader>a", "<cmd>lua require('lspimport').import()<cr>" } },
+    keys = { { "<leader>lI", "<cmd>lua require('lspimport').import()<cr>" } },
   },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
     ft = { "python" },
-    branch = "regexp",
+    -- branch = "regexp",
     config = function()
       require("venv-selector").setup {
         -- Your options go here

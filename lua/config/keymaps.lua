@@ -10,16 +10,18 @@ local NS = { noremap = true, silent = true }
 
 -- General keymaps
 keymap.set("i", "jk", "<ESC>", NS)           -- exit insert mode with jk
+keymap.set("n", "vv", "V", NS)
 keymap.set("n", "<leader>q", ":q!<CR>", NS)  -- quit without saving
 keymap.set("n", "W", ":w<CR>", NS)           -- save
 keymap.set("n", "Q", ":Bdelete<CR>", NS)     -- close buffer
 keymap.set("v", "y", "myy`y", NS)     -- close buffer
 
+
 -- Buffers
 keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
 keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
-keymap.set("n", "<leader><Space>", ":Telecope buffers<cr>", NS)
+keymap.set("n", "<leader><Space>", ":Telescope buffers<cr>", NS)
 
 
 -- Split window management
@@ -156,8 +158,6 @@ keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", NS)
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G", NS)
-
-keymap.set("n", "vv", "V", NS)
 
 keymap.set("v", "<", "<gv", { desc = "Stay in indent mode" })
 keymap.set("v", ">", ">gv", { desc = "Stay in indent mode" })

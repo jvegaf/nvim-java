@@ -15,7 +15,7 @@ opt.autoindent = true
 vim.bo.softtabstop = 2
 
 opt.timeout = true
-opt.timeoutlen = 100
+opt.timeoutlen = 300
 
 -- Line Wrapping
 opt.wrap = false
