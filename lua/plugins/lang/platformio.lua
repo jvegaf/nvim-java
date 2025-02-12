@@ -15,6 +15,8 @@ return {
     { 'nvim-lua/plenary.nvim' },
   },
   opts = function()
-    require('platformio').setup()
+    require('platformio').setup({
+      lsp = 'clangd',
+    })
   end,
 }
