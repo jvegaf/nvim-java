@@ -105,10 +105,6 @@ return {
       map("n", "<localleader>fd", g.duplicateFile, { desc = "genghis: duplicate current file" })
     end,
   },
-  {
-    "normen/vim-pio",
-    event = "VeryLazy",
-  },
   -- }}}
   --------------------------------------------------------------------------------
   -- Share Code
