@@ -1,7 +1,7 @@
 return {
   {
     'jim-at-jibba/micropython.nvim',
-    -- enabled = false,
+    enabled = false,
     event = 'VeryLazy',
     dependencies = { 'akinsho/toggleterm.nvim', 'stevearc/dressing.nvim' },
     config = function()
