@@ -3,11 +3,11 @@ local M = {}
 --- Function to load the params needed for lsp
 ---@param args {} on this case will be on_attach, capabilities and flags
 function M.load(args)
-  local venv_path = os.getenv("VIRTUAL_ENV")
+  local venv_path = os.getenv('VIRTUAL_ENV')
   local py_path = nil
   -- decide which python executable to use for mypy
   if venv_path ~= nil then
-    py_path = venv_path .. "/bin/python3"
+    py_path = venv_path .. '/bin/python3'
   else
     py_path = vim.g.python3_host_prog
   end
@@ -49,7 +49,7 @@ function M.load(args)
   --   },
   -- })
 
-  require("lspconfig").pyright.setup({
+  require('lspconfig').pyright.setup({
     on_attach = args.on_attach,
     flags = args.flags,
     capabilities = args.capabilities,
@@ -88,16 +88,16 @@ function M.load(args)
   --   },
   -- })
 
-  require("lspconfig").sourcery.setup({
-    on_attach = args.on_attach,
-    flags = args.flags,
-    capabilities = args.capabilities,
-    init_options = {
-      editor_version = "vim",
-    },
-    filetypes = { "python" },
-    cmd = { "sourcery", "lsp" },
-  })
+  -- require("lspconfig").sourcery.setup({
+  --   on_attach = args.on_attach,
+  --   flags = args.flags,
+  --   capabilities = args.capabilities,
+  --   init_options = {
+  --     editor_version = "vim",
+  --   },
+  --   filetypes = { "python" },
+  --   cmd = { "sourcery", "lsp" },
+  -- })
 end
 
 return M
