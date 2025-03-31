@@ -140,7 +140,7 @@ local lsps_table = {
   lua_lsp = require(providers_path .. 'lua'),
   python_lsp = require(providers_path .. 'python'),
   vtsls = require(providers_path .. 'vtsls'),
-  java = require(providers_path .. 'java'),
+  -- java = require(providers_path .. 'java'),
   -- sql_lsp = require(providers_path .. "sql"),
 }
 

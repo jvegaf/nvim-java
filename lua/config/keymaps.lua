@@ -12,16 +12,16 @@ local NS = { noremap = true, silent = true }
 keymap.set("i", "jk", "<ESC>", NS)           -- exit insert mode with jk
 keymap.set("n", "vv", "V", NS)
 keymap.set("n", "<leader>q", ":q!<CR>", NS)  -- quit without saving
-keymap.set("n", "W", ":w<CR>", NS)           -- save
-keymap.set("n", "Q", ":Bdelete<CR>", NS)     -- close buffer
+keymap.set("n", "<localleader>w", ":w<CR>", NS)           -- save
+keymap.set("n", "<localleader>q", ":Bdelete<CR>", NS)     -- close buffer
 keymap.set("v", "y", "myy`y", NS)     -- close buffer
 
 
 -- Buffers
-keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
-keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
+keymap.set("n", "H", ":BufferLineCyclePrev<cr>", NS)
+keymap.set("n", "L", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
-keymap.set("n", "<leader><Space>", ":Telescope buffers<cr>", NS)
+keymap.set("n", "<localleader><Space>", ":Telescope buffers<cr>", NS)
 
 
 -- Split window management
