@@ -1,18 +1,18 @@
 ---@diagnostic disable: deprecated
 return {
-  "nvim-lualine/lualine.nvim",
-  event = "BufWinEnter",
+  'nvim-lualine/lualine.nvim',
+  event = 'BufWinEnter',
   dependencies = {
-    { "nvim-tree/nvim-web-devicons", lazy = true },
-    { "folke/noice.nvim" },
+    { 'nvim-tree/nvim-web-devicons', lazy = true },
+    { 'folke/noice.nvim' },
     { 'linrongbin16/lsp-progress.nvim' }, -- LSP loading progress
   },
   config = function()
     local function lspClients()
       -- local msg = "No Active Lsp"
-      local msg = ""
+      local msg = ''
       local buf_ft = vim.bo.filetype
-      local clients = vim.lsp.get_active_clients()
+      local clients = vim.lsp.get_clients()
       if next(clients) == nil then
         return msg
       end
@@ -25,17 +25,17 @@ return {
       return msg
     end
 
----@diagnostic disable-next-line: undefined-field
-    require("lualine").setup({
+    ---@diagnostic disable-next-line: undefined-field
+    require('lualine').setup({
       options = {
         -- theme = bubbles_theme,
         -- theme = 'tokyonight',
         -- theme = "catppuccin",
-        theme = "auto",
+        theme = 'auto',
         -- component_separators = "|",
-        component_separators = { left = "", right = "" },
+        component_separators = { left = '', right = '' },
         -- section_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = '', right = '' },
         always_divide_middle = false,
         globalstatus = false,
       },
@@ -46,9 +46,9 @@ return {
         lualine_a = {
           -- { "mode", separator = { left = "" }, right_padding = 2, icon = "" },
           {
-            "mode", --[[ separator = { left = "" }, ]]
+            'mode', --[[ separator = { left = "" }, ]]
             right_padding = 2,
-            icon = "",
+            icon = '',
           },
         },
         -- lualine_b = { "filename", { "branch", icon = "" }, { "diagnostics", sources = { "nvim_diagnostic" } } },
@@ -62,9 +62,9 @@ return {
           -- 		newfile = "New File", -- Text to show for newly created file before first write
           -- 	},
           -- },
-          { "branch", icon = "" },
+          { 'branch', icon = '' },
           -- "diff",
-          { "diagnostics", sources = { "nvim_diagnostic" } },
+          { 'diagnostics', sources = { 'nvim_diagnostic' } },
         },
         lualine_c = {
           -- {
@@ -73,13 +73,13 @@ return {
           --     end,
           -- },
           {
-            require("noice").api.status.message.get_hl,
-            cond = require("noice").api.status.message.has,
+            require('noice').api.status.message.get_hl,
+            cond = require('noice').api.status.message.has,
           },
           {
-            require("noice").api.status.command.get,
-            cond = require("noice").api.status.command.has,
-            color = { fg = "#ff9e64" },
+            require('noice').api.status.command.get,
+            cond = require('noice').api.status.command.has,
+            color = { fg = '#ff9e64' },
           },
           -- {
           -- 	require("noice").api.status.mode.get,
@@ -87,9 +87,9 @@ return {
           -- 	color = { fg = "#ff9e64" },
           -- },
           {
-            require("noice").api.status.search.get,
-            cond = require("noice").api.status.search.has,
-            color = { fg = "#ff9e64" },
+            require('noice').api.status.search.get,
+            cond = require('noice').api.status.search.has,
+            color = { fg = '#ff9e64' },
           },
         },
         -- lualine_c = {  {gpsLocation, cond = isGpsAvailable}},
@@ -99,16 +99,16 @@ return {
         lualine_x = {
           -- "mason",
           {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = { fg = "#ff9e64" },
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
+            color = { fg = '#ff9e64' },
           },
         },
         -- lualine_y = { { lspClients, icon = "喇" }, "tabs", "filetype", "progress" },
-        lualine_y = { { lspClients, icon = "" }, "filetype", "progress", "searchcount" },
+        lualine_y = { { lspClients, icon = '' }, 'filetype', 'progress', 'searchcount' },
         lualine_z = {
           {
-            "location", --[[ separator = { right = "" }, ]]
+            'location', --[[ separator = { right = "" }, ]]
             left_padding = 2,
           },
         },
@@ -119,7 +119,7 @@ return {
       inactive_sections = {
         lualine_a = {
           -- {
-          "filename",
+          'filename',
           -- symbols = {
           -- 	modified = "[+]", -- Text to show when the file is modified.
           -- 	readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
@@ -132,41 +132,41 @@ return {
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { "location" },
+        lualine_z = { 'location' },
       },
       -- tabline = {
-        -- lualine_a = { "buffers", { "diagnostics", sources = { "nvim_diagnostic" } } },
-        -- lualine_a = {
-        --   {
-        --     "buffers",
-        --     mode = 2,
-        --     hide_filename_extension = true,
-        --     filetype_names = {
-        --       TelescopePrompt = "Telescope",
-        --       dashboard = "Dashboard",
-        --       lazy = "Lazy",
-        --       fzf = "FZF",
-        --       alpha = "Alpha",
-        --       unnamed = "[Empty Buffer]", -- Text to show for unnamed buffers.
-        --       newfile = "[New]", -- Text to show for newly created file before first write
-        --     }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-        --   },
-        -- },
-        -- lualine_b = {},
-        -- lualine_c = {},
-        -- lualine_x = {},
-        -- lualine_y = {},
-        -- lualine_z = { "tabs" },
+      -- lualine_a = { "buffers", { "diagnostics", sources = { "nvim_diagnostic" } } },
+      -- lualine_a = {
+      --   {
+      --     "buffers",
+      --     mode = 2,
+      --     hide_filename_extension = true,
+      --     filetype_names = {
+      --       TelescopePrompt = "Telescope",
+      --       dashboard = "Dashboard",
+      --       lazy = "Lazy",
+      --       fzf = "FZF",
+      --       alpha = "Alpha",
+      --       unnamed = "[Empty Buffer]", -- Text to show for unnamed buffers.
+      --       newfile = "[New]", -- Text to show for newly created file before first write
+      --     }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+      --   },
+      -- },
+      -- lualine_b = {},
+      -- lualine_c = {},
+      -- lualine_x = {},
+      -- lualine_y = {},
+      -- lualine_z = { "tabs" },
       -- },
       extensions = {
-        "nvim-tree",
-        "neo-tree",
-        "nvim-dap-ui",
-        "symbols-outline",
-        "trouble",
-        "fugitive",
-        "quickfix",
-        "toggleterm",
+        'nvim-tree',
+        'neo-tree',
+        'nvim-dap-ui',
+        'symbols-outline',
+        'trouble',
+        'fugitive',
+        'quickfix',
+        'toggleterm',
       },
     })
 
