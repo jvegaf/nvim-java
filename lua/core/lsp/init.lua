@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 
     bufopts.desc = 'Diagnostics lsp buffer list workspace folders'
-    keymap.set('n', '<leader>xl', function()
+    keymap.set('n', '<leader>cD', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
 
@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 
     bufopts.desc = 'Diagnostics lsp buffer code action'
-    keymap.set('n', '<leader>xc', vim.lsp.buf.code_action, bufopts)
+    keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
     bufopts.desc = 'Diagnostics lsp references'
     keymap.set('n', 'gr', builtin.lsp_references, bufopts)
