@@ -11,7 +11,7 @@ return {
         --   transparent = true,
         -- },
       })
-      -- vim.cmd.colorscheme('astrotheme')
+      vim.cmd.colorscheme('astrotheme')
     end,
   },
   {
