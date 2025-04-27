@@ -1,23 +1,25 @@
+vim.deprecate = function() end
+
 -- This has to be set before initializing lazy
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 -- Bootstrap lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Initialize lazy with dynamic loading of anything in the plugins directory
-require("lazy").setup({
+require('lazy').setup({
   spec = {
     -- import/override with your plugins
     { import = 'plugins.core' },
@@ -40,7 +42,7 @@ require("lazy").setup({
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
-  },                -- automatically check for plugin updates
+  }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
@@ -59,23 +61,23 @@ require("lazy").setup({
 })
 
 -- These modules are not loaded by lazy
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
-require("config.commands")
+require('config.options')
+require('config.keymaps')
+require('config.autocmds')
+require('config.commands')
 
-local is_lin = vim.loop.os_uname().sysname == "Linux"
-local is_win = vim.loop.os_uname().sysname == "Windows_NT"
-local is_mac = vim.loop.os_uname().sysname == "Darwin"
+local is_lin = vim.loop.os_uname().sysname == 'Linux'
+local is_win = vim.loop.os_uname().sysname == 'Windows_NT'
+local is_mac = vim.loop.os_uname().sysname == 'Darwin'
 
 if is_lin then
-  require("config.linux")
+  require('config.linux')
 end
 
 if is_win then
-  require("config.windows")
+  require('config.windows')
 end
 
 if is_mac then
-  require("config.macos")
+  require('config.macos')
 end
