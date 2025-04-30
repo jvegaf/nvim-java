@@ -62,8 +62,8 @@ keymap.set("n", "<localleader>qc", ":cclose<CR>") -- close quickfix list
 -- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
 -- FileBrowser
--- keymap.set("n", "<leader>ee", ":NvimTreeFocus<CR>")          -- toggle file explorer
-keymap.set("n", "<leader>E", ":Telescope file_browser<CR>") -- toggle focus to file explorer
+keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", NS)          -- toggle file explorer
+keymap.set("n", "<leader>E", ":Telescope file_browser<CR>", NS) -- toggle focus to file explorer
 
 -- Telescope
 keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })

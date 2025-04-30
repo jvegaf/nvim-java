@@ -81,3 +81,7 @@ end
 if is_mac then
   require('config.macos')
 end
+
+if vim.g.neovide then
+  vim.print(vim.g.neovide_version)
+end
