@@ -1,274 +1,61 @@
+-- This file contains the configuration for integrating GitHub Copilot and Copilot Chat plugins in Neovim.
+
+-- Define prompts for Copilot
+-- This table contains various prompts that can be used to interact with Copilot.
 local prompts = {
-  -- Code related prompts
-  Explain = "Please explain how the following code works.",
-  Review = "Please review the following code and provide suggestions for improvement.",
-  Tests = "Please explain how the selected code works, then generate unit tests for it.",
-  Refactor = "Please refactor the following code to improve its clarity and readability.",
-  FixCode = "Please fix the following code to make it work as intended.",
-  FixError = "Please explain the error in the following text and provide a solution.",
-  BetterNamings = "Please provide better names for the following variables and functions.",
-  Documentation = "Please provide documentation for the following code.",
-  SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
-  SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-  -- Text related prompts
-  Summarize = "Please summarize the following text.",
-  Spelling = "Please correct any grammar and spelling errors in the following text.",
-  Wording = "Please improve the grammar and wording of the following text.",
-  Concise = "Please rewrite the following text to make it more concise.",
+  Explain = 'Please explain how the following code works.', -- Prompt to explain code
+  Review = 'Please review the following code and provide suggestions for improvement.', -- Prompt to review code
+  Tests = 'Please explain how the selected code works, then generate unit tests for it.', -- Prompt to generate unit tests
+  Refactor = 'Please refactor the following code to improve its clarity and readability.', -- Prompt to refactor code
+  FixCode = 'Please fix the following code to make it work as intended.', -- Prompt to fix code
+  FixError = 'Please explain the error in the following text and provide a solution.', -- Prompt to fix errors
+  BetterNamings = 'Please provide better names for the following variables and functions.', -- Prompt to suggest better names
+  Documentation = 'Please provide documentation for the following code.', -- Prompt to generate documentation
+  JsDocs = 'Please provide JsDocs for the following code.', -- Prompt to generate JsDocs
+  DocumentationForGithub = 'Please provide documentation for the following code ready for GitHub using markdown.', -- Prompt to generate GitHub documentation
+  CreateAPost = 'Please provide documentation for the following code to post it in social media, like Linkedin, it has be deep, well explained and easy to understand. Also do it in a fun and engaging way.', -- Prompt to create a social media post
+  SwaggerApiDocs = 'Please provide documentation for the following API using Swagger.', -- Prompt to generate Swagger API docs
+  SwaggerJsDocs = 'Please write JSDoc for the following API using Swagger.', -- Prompt to generate Swagger JsDocs
+  Summarize = 'Please summarize the following text.', -- Prompt to summarize text
+  Spelling = 'Please correct any grammar and spelling errors in the following text.', -- Prompt to correct spelling and grammar
+  Wording = 'Please improve the grammar and wording of the following text.', -- Prompt to improve wording
+  Concise = 'Please rewrite the following text to make it more concise.', -- Prompt to make text concise
 }
 
+-- Plugin configuration
+-- This table contains the configuration for various plugins used in Neovim.
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup {
-        panel = {
-          enabled = true,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "bottom", -- | top | left | right | horizontal | vertical
-            ratio = 0.4,
-          },
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          hide_during_completion = true,
-          debounce = 75,
-          keymap = {
-            accept = "<A-f>",
-            accept_word = "<A-w>",
-            accept_line = "<A-l>",
-            next = "<A-j>",
-            prev = "<A-k>",
-            dismiss = "<A-x>",
-          },
-        },
-      }
-    end,
-  },
-  {
-    "folke/which-key.nvim",
+    'zbirenbaum/copilot.lua',
     optional = true,
-    opts = {
-      spec = {
-        { "<leader>a", group = "+AI" },
-        { "gm",        group = "+Copilot chat" },
-        { "gmh",       desc = "Show help" },
-        { "gmd",       desc = "Show diff" },
-        { "gmp",       desc = "Show system prompt" },
-        { "gms",       desc = "Show selection" },
-        { "gmy",       desc = "Yank diff" },
-      },
-    },
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
-    },
-    opts = {
-      question_header = "## User ",
-      answer_header = "## Copilot ",
-      error_header = "## Error ",
-      prompts = prompts,
-      auto_follow_cursor = false, -- Don't follow the cursor after getting response
-      mappings = {
-        -- Use tab for completion
-        complete = {
-          detail = "Use @<Tab> or /<Tab> for options.",
-          insert = "<Tab>",
-        },
-        -- Close the chat
-        close = {
-          normal = "q",
-          insert = "<C-c>",
-        },
-        -- Reset the chat buffer
-        reset = {
-          normal = "<C-x>",
-          insert = "<C-x>",
-        },
-        -- Submit the prompt to Copilot
-        submit_prompt = {
-          normal = "<CR>",
-          insert = "<C-CR>",
-        },
-        -- Accept the diff
-        accept_diff = {
-          normal = "<C-y>",
-          insert = "<C-y>",
-        },
-        -- Yank the diff in the response to register
-        yank_diff = {
-          normal = "gmy",
-        },
-        -- Show the diff
-        show_diff = {
-          normal = "gmd",
-        },
-        -- Show the info
-        show_info = {
-          normal = "gmi",
-        },
-        -- Show the context
-        show_context = {
-          normal = "gmc",
-        },
-        -- Show help
-        show_help = {
-          normal = "gmh",
-        },
-      },
-    },
-    config = function(_, opts)
-      local chat = require "CopilotChat"
-      local select = require "CopilotChat.select"
-      -- Use unnamed register for the selection
-      opts.selection = select.unnamed
-
-      chat.setup(opts)
-
-      vim.api.nvim_create_user_command(
-        "CopilotChatVisual",
-        function(args) chat.ask(args.args, { selection = select.visual }) end,
-        { nargs = "*", range = true }
-      )
-
-      -- Inline chat with Copilot
-      vim.api.nvim_create_user_command(
-        "CopilotChatInline",
-        function(args)
-          chat.ask(args.args, {
-            selection = select.visual,
-            window = {
-              layout = "float",
-              relative = "cursor",
-              width = 1,
-              height = 0.4,
-              row = 1,
-            },
-          })
-        end,
-        { nargs = "*", range = true }
-      )
-
-      -- Restore CopilotChatBuffer
-      vim.api.nvim_create_user_command(
-        "CopilotChatBuffer",
-        function(args) chat.ask(args.args, { selection = select.buffer }) end,
-        { nargs = "*", range = true }
-      )
-
-      -- Custom buffer for CopilotChat
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "copilot-*",
-        callback = function()
-          vim.opt_local.relativenumber = true
-          vim.opt_local.number = true
-
-          -- Get current filetype and set it to markdown if the current filetype is copilot-chat
-          local ft = vim.bo.filetype
-          if ft == "copilot-chat" then vim.bo.filetype = "markdown" end
-        end,
-      })
-    end,
-    event = "VeryLazy",
-    keys = {
-      -- Show prompts actions with telescope
-      {
-        "<leader>ap",
-        function()
-          local actions = require "CopilotChat.actions"
-          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-        end,
-        desc = "CopilotChat - Prompt actions",
-      },
-      {
-        "<leader>ap",
-        ":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
-        mode = "x",
-        desc = "CopilotChat - Prompt actions",
-      },
-      -- Code related commands
-      { "<leader>ae", "<cmd>CopilotChatExplain<cr>",       desc = "CopilotChat - Explain code" },
-      { "<leader>at", "<cmd>CopilotChatTests<cr>",         desc = "CopilotChat - Generate tests" },
-      { "<leader>ar", "<cmd>CopilotChatReview<cr>",        desc = "CopilotChat - Review code" },
-      { "<leader>aR", "<cmd>CopilotChatRefactor<cr>",      desc = "CopilotChat - Refactor code" },
-      { "<leader>an", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
-      -- Chat with Copilot in visual mode
-      {
-        "<leader>av",
-        ":CopilotChatVisual",
-        mode = "x",
-        desc = "CopilotChat - Open in vertical split",
-      },
-      {
-        "<leader>ax",
-        ":CopilotChatInline<cr>",
-        mode = "x",
-        desc = "CopilotChat - Inline chat",
-      },
-      -- Custom input for CopilotChat
-      {
-        "<leader>ai",
-        function()
-          local input = vim.fn.input "Ask Copilot: "
-          if input ~= "" then vim.cmd("CopilotChat " .. input) end
-        end,
-        desc = "CopilotChat - Ask input",
-      },
-      -- Generate commit message based on the git diff
-      {
-        "<leader>am",
-        "<cmd>CopilotChatCommit<cr>",
-        desc = "CopilotChat - Generate commit message for all changes",
-      },
-      -- Quick chat with Copilot
-      {
-        "<leader>aq",
-        function()
-          local input = vim.fn.input "Quick Chat: "
-          if input ~= "" then vim.cmd("CopilotChatBuffer " .. input) end
-        end,
-        desc = "CopilotChat - Quick chat",
-      },
-      -- Debug
-      { "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>",     desc = "CopilotChat - Debug Info" },
-      -- Fix the issue with diagnostic
-      { "<leader>af", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
-      -- Clear buffer and chat history
-      { "<leader>al", "<cmd>CopilotChatReset<cr>",         desc = "CopilotChat - Clear buffer and chat history" },
-      -- Toggle Copilot Chat Vsplit
-      { "<leader>av", "<cmd>CopilotChatToggle<cr>",        desc = "CopilotChat - Toggle" },
-      -- Copilot Chat Models
-      { "<leader>a?", "<cmd>CopilotChatModels<cr>",        desc = "CopilotChat - Select Models" },
-    },
-  },
-  {
-    "jonahgoldwastaken/copilot-status.nvim",
-    dependencies = { "zbirenbaum/copilot.lua", "nvim-lualine/lualine.nvim" },
-    lazy = true,
-    event = "BufReadPost",
     opts = function()
-      require("lualine").setup {
-        sections = {
-          lualine_x = {
-            function() return require("copilot_status").status_string() end,
-            cnd = function() return require("copilot_status").enabled() end,
-          },
+      require('copilot.api').status = require('copilot.status')
+      require('copilot.api').filetypes = {
+        filetypes = {
+          yaml = false,
+          markdown = false,
+          help = false,
+          gitcommit = false,
+          gitrebase = false,
+          hgcommit = false,
+          svn = false,
+          cvs = false,
+          ['.'] = false,
         },
       }
     end,
+  },
+  -- Copilot Chat plugin configuration
+  {
+    'CopilotC-Nvim/CopilotChat.nvim', -- Load the Copilot Chat plugin
+    opts = {
+      prompts = prompts,
+      -- system_prompt = 'Este GPT es un clon del usuario, un arquitecto líder frontend especializado en Angular y React, con experiencia en arquitectura limpia, arquitectura hexagonal y separación de lógica en aplicaciones escalables. Tiene un enfoque técnico pero práctico, con explicaciones claras y aplicables, siempre con ejemplos útiles para desarrolladores con conocimientos intermedios y avanzados.\n\nHabla con un tono profesional pero cercano, relajado y con un toque de humor inteligente. Evita formalidades excesivas y usa un lenguaje directo, técnico cuando es necesario, pero accesible. Su estilo es argentino, sin caer en clichés, y utiliza expresiones como “buenas acá estamos” o “dale que va” según el contexto.\n\nSus principales áreas de conocimiento incluyen:\n- Desarrollo frontend con Angular, React y gestión de estado avanzada (Redux, Signals, State Managers propios como Gentleman State Manager y GPX-Store).\n- Arquitectura de software con enfoque en Clean Architecture, Hexagonal Architecure y Scream Architecture.\n- Implementación de buenas prácticas en TypeScript, testing unitario y end-to-end.\n- Loco por la modularización, atomic design y el patrón contenedor presentacional \n- Herramientas de productividad como LazyVim, Tmux, Zellij, OBS y Stream Deck.\n- Mentoría y enseñanza de conceptos avanzados de forma clara y efectiva.\n- Liderazgo de comunidades y creación de contenido en YouTube, Twitch y Discord.\n\nA la hora de explicar un concepto técnico:\n1. Explica el problema que el usuario enfrenta.\n2. Propone una solución clara y directa, con ejemplos si aplica.\n3. Menciona herramientas o recursos que pueden ayudar.\n\nSi el tema es complejo, usa analogías prácticas, especialmente relacionadas con construcción y arquitectura. Si menciona una herramienta o concepto, explica su utilidad y cómo aplicarlo sin redundancias.\n\nAdemás, tiene experiencia en charlas técnicas y generación de contenido. Puede hablar sobre la importancia de la introspección, cómo balancear liderazgo y comunidad, y cómo mantenerse actualizado en tecnología mientras se experimenta con nuevas herramientas. Su estilo de comunicación es directo, pragmático y sin rodeos, pero siempre accesible y ameno.\n\nEsta es una transcripción de uno de sus vídeos para que veas como habla:\n\nLe estaba contando la otra vez que tenía una condición Que es de adulto altamente calificado no sé si lo conocen pero no es bueno el oto lo está hablando con mi mujer y y a mí cuando yo era chico mi mamá me lo dijo en su momento que a mí me habían encontrado una condición Que ti un iq muy elevado cuando era muy chico eh pero muy elevado a nivel de que estaba 5 años o 6 años por delante de un niño',
+      model = 'gpt-4o',
+      answer_header = '󱗞  The Gentleman 󱗞  ',
+      window = {
+        layout = 'float',
+      },
+    },
   },
 }
