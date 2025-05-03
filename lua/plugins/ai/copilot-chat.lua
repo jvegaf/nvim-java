@@ -253,24 +253,24 @@ return {
       { '<leader>a?', '<cmd>CopilotChatModels<cr>', desc = 'CopilotChat - Select Models' },
     },
   },
-  {
-    'jonahgoldwastaken/copilot-status.nvim',
-    dependencies = { 'zbirenbaum/copilot.lua', 'nvim-lualine/lualine.nvim' },
-    lazy = true,
-    event = 'BufReadPost',
-    opts = function()
-      require('lualine').setup({
-        sections = {
-          lualine_x = {
-            function()
-              return require('copilot_status').status_string()
-            end,
-            cnd = function()
-              return require('copilot_status').enabled()
-            end,
-          },
-        },
-      })
-    end,
-  },
+  -- {
+  --   'jonahgoldwastaken/copilot-status.nvim',
+  --   dependencies = { 'zbirenbaum/copilot.lua', 'nvim-lualine/lualine.nvim' },
+  --   lazy = true,
+  --   event = 'BufReadPost',
+  --   opts = function()
+  --     require('lualine').setup({
+  --       sections = {
+  --         lualine_x = {
+  --           function()
+  --             return require('copilot_status').status_string()
+  --           end,
+  --           cnd = function()
+  --             return require('copilot_status').enabled()
+  --           end,
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
 }
