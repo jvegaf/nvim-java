@@ -23,7 +23,7 @@ conform.setup({
     -- graphql = { { "prettierd", "prettier" } },
     -- svelte = { { "prettierd", "prettier" } },
     -- kotlin = {  "ktlint" } ,
-    dart = { 'dartfmt', lsp_format = 'fallback' },
+    -- dart = { 'dartfmt', lsp_format = 'fallback' },
     xml = { 'xmlformatter', lsp_format = 'fallback' },
   },
   format_on_save = function(bufnr)
