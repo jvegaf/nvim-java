@@ -20,7 +20,7 @@ return {
         require('vtsls').config(opts)
       end,
     },
-    { 'simrat39/rust-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    -- { 'simrat39/rust-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'lervag/vimtex' },
     -- { "akinsho/flutter-tools.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
@@ -59,15 +59,15 @@ return {
           'amarakon/nvim-cmp-buffer-lines',
           ft = { 'c', 'cpp' },
         },
-        {
-          'Saecki/crates.nvim',
-          event = { 'BufRead Cargo.toml' },
-          opts = {
-            completion = {
-              cmp = { enabled = true },
-            },
-          },
-        },
+        -- {
+        --   'Saecki/crates.nvim',
+        --   event = { 'BufRead Cargo.toml' },
+        --   opts = {
+        --     completion = {
+        --       cmp = { enabled = true },
+        --     },
+        --   },
+        -- },
       },
     },
 
@@ -156,11 +156,6 @@ return {
       },
       opts = { lsp = { auto_attach = true } },
     },
-    -- formatter / linter
-    -- {
-    --   "nvimtools/none-ls.nvim",
-    -- },
-
     -- References made easy
     {
       'dnlhc/glance.nvim',
