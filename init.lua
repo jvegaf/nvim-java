@@ -85,3 +85,18 @@ end
 if vim.g.neovide then
   vim.print(vim.g.neovide_version)
 end
+-- add "hyprlang" file tpye
+
+vim.filetype.add({
+  -- This is the recommended way to add filetypes in Neovim 0.10
+  -- See `:h filetype-add`
+  -- or `:h filetype-overrides`
+  -- or `:h filetype-override`
+  extension = {
+    hl = 'hyprlang',
+  },
+  pattern = {
+    ['.*/hypr/.*.conf'] = 'hyprlang',
+    ['hypr.*.conf'] = 'hyprlang',
+  },
+})
